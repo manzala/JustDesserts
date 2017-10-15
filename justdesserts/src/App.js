@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import cupcake from './images/cupcake.png'
 import './App.css';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
       <div className="App">
          <div className = "loginBox">
       <div className = "glass">
-        <img src="./images/cupcake.png" className = "user" />
+        <img src= {cupcake} className = "user" />
         <h3>Sign in Here</h3>
         <form>
             <div className = "inputBox">
