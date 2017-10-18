@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import cupcake from './images/cupcake.png';
-import {Signup} from './signup.js';
+import cupcake from './images/cupcake.png'
 import './App.css';
+export {Signup}
 
-class App extends Component {
+class Signup extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="Signup">
          <div className = "loginBox">
       <div className = "glass">
         <img src= {cupcake} className = "user" />
-        <h3>Sign in Here</h3>
+        <h3>Signup Here!</h3>
         <form>
             <div className = "inputBox">
               <input type="text" name="" placeholder="Username" />
@@ -22,10 +22,7 @@ class App extends Component {
             </div>
               <input type="submit" name="" value="Login" />
         </form>
-    
-          <a href= "#">Forgot Passwordk?</a>
-            <br />
-          <a href='{{./signup.js}}'>Sign up!</a>
+        <a href="#">Login!</a>
         
       </div>
     </div>
@@ -34,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Signup;
