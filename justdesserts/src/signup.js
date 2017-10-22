@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import cupcake from './images/cupcake.png'
 import './App.css';
-export {Signup}
 
-class Signup extends Component {
+
+export class Signup extends Component {
   render() {
     return (
-      <div className="Signup">
+      <div className="ignup">
          <div className = "loginBox">
       <div className = "glass">
-        <img src= {cupcake} className = "user" />
+        <img src= { cupcake} className = "user" />
         <h3>Signup Here!</h3>
         <form>
             <div className = "inputBox">
@@ -31,4 +31,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default Signup
