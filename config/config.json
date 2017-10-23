@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "DESSERT_USERNAME",
-    "password": "DESSER_PASSWORD",
+    "password": "DESSERT_PASSWORD",
     "database": "Dessert_development",
     "host": "127.0.0.1",
     "dialect": "postgresql"
