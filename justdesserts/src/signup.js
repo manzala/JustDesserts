@@ -5,7 +5,7 @@ import './App.css';
 class Signup extends Component {
   render() { 
     return (
-        <div className="ignup">
+        <div className="Signup">
             <div className = "loginBox">
                 <div className = "glass">
                     <img src= { cupcake} className = "user" />
