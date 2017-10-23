@@ -12,7 +12,7 @@ const Routes = () => (
    	<Route>
      	<div>
         <Route exact path="/" component={App} />
-        <Route exact path="/Signup" component={Signup}/>
+        <Route exact path="/Signup" component={Signup}/> 
     	</div>
   	</Route>
   </Router>
