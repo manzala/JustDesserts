@@ -16,16 +16,16 @@ class App extends Component {
             <h3>Sign in Here</h3>
             <form>
                 <div className = "inputBox">
-                  <input type="text" name="" placeholder="Username" />
+                  <input type="text" name="email" placeholder="email" />
                   <span><i className="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div className = "inputBox">
-                  <input type="password" name="" placeholder="Password" />
+                  <input type="password" name="password" placeholder="Password" />
                   <span><i className="fa fa-lock" aria-hidden="true"></i></span>
                 </div>
                 <input type="submit" name="" value="Login" />
             </form>
-            <a href= "#">Forgot Passwordk?</a>
+            <a href= "#">Forgot Password?</a>
                 <br />
             <Link to='/Signup'>Signup??</Link>    
           </div>
