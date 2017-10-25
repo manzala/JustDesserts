@@ -21,7 +21,7 @@ class Signup extends Component {
                         </div>
                         <input type="submit" name="" value="Login" />
                     </form>
-                   <a href="#">Login!</a>  
+                    
                 </div>
             </div>
         </div>
