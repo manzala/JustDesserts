@@ -16,15 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       },
     },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        notEmpty: true,
-        isAlphanumeric: true,
-      },
-    },
+  
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -45,9 +37,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   });
 
-  User.associate = (models) => {
-    models.User.hasMany(models.Post);
-  }
+ // User.associate = (models) => {
+   // models.User.hasMany(models.Post);
+  //}
 
   User.beforeCreate((user) =>
     new sequelize.Promise((resolve) => {
