@@ -21,7 +21,7 @@ module.exports = {
       password: req.body.password,
     }).then((user) => {
       req.login(user, () =>
-          res.redirect('/profile')
+          res.redirect('../justdesserts/src/App.js')
        );
     }).catch(() => {
       res.render('sign-up');
