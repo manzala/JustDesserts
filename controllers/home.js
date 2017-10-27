@@ -36,12 +36,13 @@ router.delete('/:id', (req, res) => {
 });
 ///////////
 
-
+///////WORKS CREATES DATABASE TABLE /////
 router.get('/sign-up', (req, res) =>{
   res.render('sign-up');
 });
 
 router.post('/sign-up', (req,res)=>{
+  console.log("home.js herere")
   models.Users.create({
     firstName: req.body.fistName,
     lastName: req.body.lastName,
@@ -49,7 +50,7 @@ router.post('/sign-up', (req,res)=>{
     password_hash: req.body.password,
   }).then((user) => {
     req.login(user,() => {
-      res.redirect('/profile');
+      res.redirect('../justdesserts/src/App.js');
     });
   });
 });
@@ -71,8 +72,8 @@ router.get('profile', (res,req)=>{
   res.render('profile');
 })
 
-var port = process.env.API_PORT || 3000;
+//var port = process.env.API_PORT || 3000;
 // app.use('/api', router);
-app.listen(3000, () => console.log('Server listening on port 3001!') );
+//app.listen(3000, () => console.log('Server listening on port 3001!') );
 
 module.exports = router;

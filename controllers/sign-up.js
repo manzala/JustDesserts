@@ -14,6 +14,7 @@ module.exports = {
    res.render('sign-up');
   },
   submit(req, res) {
+    console.log("submit function was reached");
     models.User.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
