@@ -8,7 +8,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-
+//app.use(cookieParser());
+app.use(express.static('./public'));
 
 // Uncomment the following if you want to serve up static assets.
 // (You must create the public folder)
@@ -28,6 +29,7 @@ app.set('view engine', 'handlebars');
 app.set('views', `${__dirname}/views/`);
 */
 
+app.listen(3000);
 
 
 // Load up all of the controllers
