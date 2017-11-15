@@ -11,12 +11,15 @@ module.exports = {
 
 		return router;
 	},
-
-	index(req, res){
+	index(req, res) {
+   		 res.render('login', { error: req.flash('error') });
+  },
+	
+	login(req, res){
 		passport.authentication('local' , {
 			successRedirect: '/profile',
 			failureRedirect: '/login',
-			failureFlah: true;
+			failureFlah: true,
 			successFlash: true,
 		}) (req, res);
 	},

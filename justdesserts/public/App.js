@@ -6,6 +6,7 @@ import './App.css';
 
 import { Signup } from './Signup'
 
+
 class App extends Component {
   render() {
     return (
@@ -16,7 +17,7 @@ class App extends Component {
             <h3>Sign in Here</h3>
             <form>
                 <div className = "inputBox">
-                  <input type="text" name="email" placeholder="email" />
+                  <input type="text" name="email" placeholder="Email" />
                   <span><i className="fa fa-user" aria-hidden="true"></i></span>
                 </div>
                 <div className = "inputBox">
@@ -25,8 +26,7 @@ class App extends Component {
                 </div>
                 <input type="submit" name="" value="Login" />
             </form>
-            <a href= "#">Forgot Password?</a>
-                <br />
+            <Link to='/Recover'>Forgot Password?</Link>
             <Link to='/Signup'>Signup??</Link>    
           </div>
         </div>

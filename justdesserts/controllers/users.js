@@ -14,7 +14,7 @@ module.exports = {
 	index(req, res){
 		models.User.findAll({
 		}).then((allUsers) => {
-			res.render('email', {allUsers});
+			res.render('users', {allUsers});
 		});
 	},
 
@@ -22,7 +22,7 @@ module.exports = {
 		models.User.findOne({
 			where:{
 				email: req.params.email,
-			},
+			
 		}).then((user) => {
 			if(user){	
 				res.render('users/single', {user: user});

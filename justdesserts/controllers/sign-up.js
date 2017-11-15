@@ -1,4 +1,4 @@
-const express = require('express');
+ const express = require('express');
 const models = require('../models');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
     const router = express.Router();
 
     router.get('/', this.index);
-    router.get('/', this.submit);
+    router.post('/', this.submit);
 
     return router;
   },

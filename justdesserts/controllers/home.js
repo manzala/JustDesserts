@@ -2,11 +2,16 @@ const express = require('express');
 const models = require('../models');
 
 const router = express.Router();
-const app = express();
+//const app = express();
 
 const passport = require('../middlewares/authentication');
 
+router.get('/', (req, res)=>{
+  res.json({
+    msg: "Successful GET to '/ route"
+  });
 
+});
 
 
 // router.get('/', (req, res) => {
@@ -39,8 +44,12 @@ const passport = require('../middlewares/authentication');
 ///////WORKS CREATES DATABASE TABLE /////
 
 
-router.post('/sign-up', (req,res)=>{
-  console.log("home.js herere")
+//router.post('/homepage', passport.authenticate('local'), (req,res) =>{
+  //res.json({ message: 'HOMEPAGE'});
+//})
+
+/***router.get('/Signup', (req,res)=>{
+  console.log("home.js hereee")
   models.User.create({
     firstName: req.body.fistName,
     lastName: req.body.lastName,
@@ -52,14 +61,14 @@ router.post('/sign-up', (req,res)=>{
     });
   });
 });
+***/
 
 
 
-
-router.post('/login', passport.authenticate('local'), (req,res) =>{
+/***8router.post('/login', passport.authenticate('local'), (req,res) =>{
   res.json({ message: 'Logged IN'});
 })
-
+***/
 // router.get('profile', (res,req)=>{
 //   passport.redirectIfNotLoggedIn('../justdesserts/src/App.js'),
 //   res.render('profile');
