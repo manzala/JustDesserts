@@ -39,20 +39,25 @@ const passport = require('../middlewares/authentication');
 ///////WORKS CREATES DATABASE TABLE /////
 
 
-router.post('/sign-up', (req,res)=>{
-  console.log("home.js herere")
-  models.User.create({
-    firstName: req.body.fistName,
-    lastName: req.body.lastName,
-    email: req.body.email,
-    password_hash: req.body.password,
-  }).then((user) => {
-    req.login(user,() => {
+// This is accessed via fetch and '/api/sign-up'
+ router.post('/sign-up', (req,res)=>{
+   console.log("home.js herere")
+   models.User.create({
+    firstName: req.body.firstName,
+     lastName: req.body.lastName,
+     email: req.body.email,
+     password_hash: req.body.password,
+   }).then((user) => {
+    console.log("in then() function")
+     req.login(user,() => {
       res.json({ message: "It WORKED"});
-    });
-  });
-});
-
+      console.log("in req.login() function")
+      res.json({ message: "It WORKED", user: user});
+     });
+  }).catch((errors) => {
+    res.json({message: "ERROR"});
+   });
+ });
 
 
 

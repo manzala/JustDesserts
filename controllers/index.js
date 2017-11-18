@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 
-router.use('/alt', require('./alt'));
+//router.use('/alt', require('./alt'));
 router.use('/api', require('./home'));
 
 

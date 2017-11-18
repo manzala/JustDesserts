@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import cupcake from './images/cupcake.png';
 import './App.css';
 
-import { Signup } from './Signup'
+//import { Signup } from './Signup'
 
 class App extends Component {
   render() {
