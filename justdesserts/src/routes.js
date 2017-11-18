@@ -6,6 +6,7 @@ import {
 
 import App from './App';
 import Signup from './Signup';
+import Search from './Search'
 
 const Routes = () => (
   <Router>
@@ -13,7 +14,8 @@ const Routes = () => (
      	<div>
         <Route exact path="/" component={App} />
         <Route exact path="/Signup" component={Signup}/> 
-    	</div>
+        <Route exact payh="/Search" component={Search}>
+     	</div>
   	</Route>
   </Router>
 )
