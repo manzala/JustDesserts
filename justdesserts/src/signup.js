@@ -18,30 +18,31 @@ constructor() {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
-    const fieldName = event.target.name;
-    this.setState({ [fieldName]: event.target.value });
+  handleChange(value, fieldName) {
+    this.setState({ [fieldName]: value });
   }
 
 
   handleClick(event) {
-   console.log('in handleClick');
+    event.preventDefault();
+    const { firstName, lastName, email, password } = this.state 
+    
+    console.log('in handleClick');
     console.log(this.state);
+
     fetch('/api/sign-up', {
       method: "POST",
       body: JSON.stringify({
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        password: this.state.password,
+        firstName,
+        lastName,
+        email,
+        password,
       }),
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type":"application/json"
       }})
-      .then(response => response.json())
-      .then(body => console.log(body))
-
-    event.preventDefault();
+    .then(response => response.json())
+    .then(body => console.log(body))
   }
 
   render() { 
@@ -53,19 +54,19 @@ constructor() {
                     <h3>Signup Here!</h3>
                     <form onSubmit={this.handleClick}>
                         <div className = "inputBox">
-                            <input type="text" name="firstName" placeholder="firstName" />
+                            <input type="text" name="firstName" placeholder="firstName" onChange={(e) => this.handleChange(e.target.value, 'firstName')}/>
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">
-                            <input type="text" name="lastName" placeholder="lastName" />
+                            <input type="text" name="lastName" placeholder="lastName" onChange={(e) => this.handleChange(e.target.value, 'lastName')}/>
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">
-                            <input type="text" name="email" placeholder="email" />
+                            <input type="text" name="email" placeholder="email" onChange={(e) => this.handleChange(e.target.value, 'email')} />
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">
-                            <input type="password" name="password" placeholder="password" />
+                            <input type="password" name="password" placeholder="password" onChange={(e) => this.handleChange(e.target.value, 'password')}/>
                             <span><i className="fa fa-lock" aria-hidden="true"></i></span>
                         </div>
                         <input type="submit" value="Signup"/>
