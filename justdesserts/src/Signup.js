@@ -30,7 +30,7 @@ constructor() {
     console.log('in handleClick');
     console.log(this.state);
 
-    fetch('http://localhost:8000/api/sign-up', {
+    fetch('/api/sign-up', {
       method: "POST",
       body: JSON.stringify({
         firstName,
