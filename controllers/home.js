@@ -50,21 +50,21 @@ router.get('/sign-up', (req, res) => {
   res.send({ data: 'got post for sign-up'})
 
    console.log("home.js herere")
-  //  models.User.create({
-  //   firstName: req.body.firstName,
-  //   lastName: req.body.lastName,
-  //   email: req.body.email,
-  //   password_hash: req.body.password,
-  //  }).then((user) => {
-  //   console.log("in then() function")
-  //    req.login(user,() => {
-  //     res.json({ message: "It WORKED"});
-  //     console.log("in req.login() function")
-  //     res.json({ message: "It WORKED", user: user});
-  //    });
-  // }).catch((errors) => {
-  //   res.json({message: "ERROR"});
-  //  });
+   models.User.create({
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    email: req.body.email,
+    password_hash: req.body.password,
+   }).then((user) => {
+    console.log("in then() function")
+     req.login(user,() => {
+      res.json({ message: "It WORKED"});
+      console.log("in req.login() function")
+      res.json({ message: "It WORKED", user: user});
+     });
+  }).catch((errors) => {
+    res.json({message: "ERROR"});
+   });
  });
 
 

@@ -30,7 +30,7 @@ constructor() {
     console.log('in handleClick');
     console.log(this.state);
 
-    fetch('/api/sign-up', {
+    fetch('http://localhost:8000/api/sign-up', {
       method: "POST",
       body: JSON.stringify({
         firstName,
@@ -42,7 +42,7 @@ constructor() {
         "Content-Type":"application/json"
       }})
     .then(response => response.json())
-    .then(body => console.log(body))
+    .then(body => console.log(body)).catch(()=> console.log("EOROROROR"))
   }
 
   render() { 
