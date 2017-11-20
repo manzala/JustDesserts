@@ -58,7 +58,7 @@ constructor() {
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">
-                            <input type="text" name="lastName" placeholder="lastName" onChange={(e) => this.handleChange(e.target.value, 'lastName')}/>
+                            <input type="text" name="lastName" placeholder="lastName" onClick={(e) => this.handleChange(e.target.value, 'lastName')}/>
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">

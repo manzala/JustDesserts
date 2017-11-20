@@ -47,7 +47,7 @@ router.get('/sign-up', (req, res) => {
 // This is accessed via fetch and '/api/sign-up'
  router.post('/sign-up', (req,res)=>{
   console.log(req.body)
-  res.send({ data: 'got post for sign-up'})
+  //res.send({ data: 'got post for sign-up'})
 
    console.log("home.js herere")
    models.User.create({
