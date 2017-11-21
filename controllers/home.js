@@ -58,7 +58,7 @@ router.get('/sign-up', (req, res) => {
    }).then((user) => {
     console.log("in then() function")
      req.login(user,() => {
-      res.json({ message: "It WORKED"});
+      
       console.log("in req.login() function")
       res.json({ message: "It WORKED", user: user});
      });
