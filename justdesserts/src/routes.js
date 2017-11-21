@@ -7,6 +7,7 @@ import {
 import Homepage from './Homepage';
 import App from './App';
 import Signup from './Signup';
+import profile from './profile';
 
 const Routes = () => (
   <Router>
@@ -15,6 +16,7 @@ const Routes = () => (
         <Route exact path="/" component={Homepage} />
         <Route exact path="/login" component={App} />
         <Route exact path="/Signup" component={Signup}/> 
+        <Route exact path="/profile" component={profile}/> 
     	</div>
   	</Route>
   </Router>

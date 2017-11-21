@@ -70,6 +70,7 @@ constructor() {
                             <span><i className="fa fa-lock" aria-hidden="true"></i></span>
                         </div>
                         <input type="submit" value="Signup"/>
+
                     </form>
                     
                 </div>

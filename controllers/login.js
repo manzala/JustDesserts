@@ -13,6 +13,10 @@ module.exports = {
 	},
 
 	index(req, res){
+		res.render('login', {error: req.flash('error')});
+	},
+
+	login(req, res){
 		passport.authentication('local' , {
 			successRedirect: '/profile',
 			failureRedirect: '/login',
