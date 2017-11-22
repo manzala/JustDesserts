@@ -1,10 +1,14 @@
 const express = require('express');
+const models = require('../models');
+const passport = require('../middlewares/authentication');
 const Redirect = require('../middlewares/redirect');
 
 module.exports = {
 	registerRouter(){
 		const router = express.Router();
 
+
+		router.get('/', redirect.isLoggedIn, this.index);
 		router.get('/', Redirect.ifNotLoggedIn(), this.index);
 
 		return router;
@@ -14,3 +18,4 @@ module.exports = {
 		res.render('profile', {user: req.user, success: req.flash('success')});
 	},
 };
+

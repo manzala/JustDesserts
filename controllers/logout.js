@@ -1,4 +1,5 @@
 const express = require('express');
+const redirect = require('../middlewares/redirect');
 
 module.exports = {
 	registerRouter(){

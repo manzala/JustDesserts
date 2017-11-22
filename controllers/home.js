@@ -71,6 +71,7 @@ router.get('/sign-up', (req, res) => {
 
 router.post('/login', passport.authenticate('local'), (req,res) =>{
   res.json({ message: 'Logged IN'});
+  console.log('At Router');
 })
 
 // router.get('profile', (res,req)=>{

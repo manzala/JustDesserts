@@ -7,6 +7,28 @@ import './App.css';
 import { Profile } from './profile'
 
 class App extends Component {
+constructor() {
+    super();
+    this.state = {
+      email: '',
+      password: '',
+    };
+
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value, fieldName) {
+    this.setState({ [fieldName]: value });
+
+  }
+
+  
+  handleClick(event) {
+    event.preventDefault();
+    const { email, password } = this.state
+  }
+
   render() {
     return (
       <div className="App">
@@ -14,13 +36,13 @@ class App extends Component {
           <div className = "glass">
             <img src= {cupcake} className = "user" />
               <h3>Sign in Here</h3>
-                <form action="/profile" method="post">
+                <form  onSubmit={this.handleClick}>
                       <div className = "inputBox">
-                         <input type="text" name="email" placeholder="email" />
+                         <input type="text" name="email" placeholder="email" onChange={(e) => this.handleChange(e.target.value, 'email')}/>
                         <span><i className="fa fa-user" aria-hidden="true"></i></span>
                       </div>
                           <div className = "inputBox">
-                              <input type="password" name="password" placeholder="Password" />
+                              <input type="password" name="password" placeholder="Password" onChange={(e) => this.handleChange(e.target.value, 'password')}/>
                           <span><i className="fa fa-lock" aria-hidden="true"></i></span>
                       </div>
                       <div>

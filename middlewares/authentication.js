@@ -29,11 +29,11 @@ passport.use(new LocalStrategy({
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.email);
+  done(null, user.id);
 });
 
-passport.deserializeUser((email, done) => {
-  User.findById(email).then((user) => {
+passport.deserializeUser((id, done) => {
+  User.findById(id).then((user) => {
     if (user == null) {
       return done(null, false);
     }

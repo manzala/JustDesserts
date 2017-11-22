@@ -23,5 +23,6 @@ module.exports = {
 			failureFlah: true;
 			successFlash: true,
 		}) (req, res);
+		console.log("log in ");
 	},
 };

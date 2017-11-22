@@ -1,8 +1,9 @@
 const bodyParser = require('body-parser');
 const express = require('express');
 const models = require('./models');
-
+const flash = require('connect-flash');
 const expressSession = require('express-session');
+const viewHelpers = require('./middlewares/viewHelpers');
 const passport = require('./middlewares/authentication');
 
 const PORT = process.env.PORT || 8000;
@@ -38,7 +39,8 @@ app.set('views', `${__dirname}/views/`);
 */
 
 //app.listen(3000);
-
+app.use(flash());
+app.use(viewHelpers.register());
 
 // Load up all of the controllers
 const controllers = require('./controllers');

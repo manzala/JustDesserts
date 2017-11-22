@@ -1,5 +1,6 @@
 const express = require('express');
 const models = require('../models');
+const passport = require('../middlewares/authentication');
 
 module.exports = {
   registerRouter() {
