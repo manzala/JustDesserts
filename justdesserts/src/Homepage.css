@@ -53,7 +53,7 @@ header.masthead {
   background-size: cover;
 }
   
-header.masthead {
+header.masthead .overlay {
     position: absolute;
     background-color: white;
     height: 90%;

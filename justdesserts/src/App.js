@@ -63,7 +63,6 @@ handleClick(event) {
                           <span><i className="fa fa-lock" aria-hidden="true"></i></span>
                       </div>
                       <div>
-                      <label><input type="checkbox" /> Rember Me</label>
                       </div>
                    <input type="submit" name="" value="Login" onClick={(e)=> this.handleClick(e)}/>
                </form>
