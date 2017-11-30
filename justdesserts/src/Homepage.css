@@ -1,120 +1,93 @@
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display:400,800);
-@import url('https://fonts.googleapis.com/css?family=Nosifer');
-@import url('https://fonts.googleapis.com/css?family=Jolly+Lodger');
+@import url('https://fonts.googleapis.com/css?family=Sacramento');
+@import url('https://fonts.googleapis.com/css?family=Mystery+Quest');
 
 
 body 
 {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background: url(./images/bg.jpg);
+  background-color:#fff;
   background-repeat:no-repeat;
   background-size:cover;
 
 
 }
+.Homepage
+{
+  background-color:#fff;
+  background-repeat:no-repeat;
+  background-size:cover;
+
+}
+
+.navbar-brand label{
+  color: red;
+  font-size: 2em;
+  font-family: 'Mystery Quest', cursive;
+  margin-top: 20px;
+}
 
 
-h1 {
+.navbar-brand {
   text-transform: uppercase;
-  font-family: 'Nosifer', cursive;
-  font-size: 600%;
-  text-align: center;
-  margin-top: 20%;
-  margin-bottom: 0;
-  line-height: 1.3em;
-  color: rgb(102,0,0);
-  text-shadow: 20px 10px black, 10px 0px rgb(26,0,0);
+  font-family: 'Mystery Quest', cursive;
+  letter-spacing: 4px;
+  margin-left:20px;
+  padding: 0;
+  }
+
+nav .btn{
+  border-color: transparent; 
+  background-color:red;
+}
+
+.navbar{
+    box-shadow: 0 0 5px black;
+    height: 55px;
 }
 
 
-.line {
-  width: 50%;
-  border: 0;
-  border-bottom: 10px solid black;
-  opacity: .5;
-}
-
-h2{
-  text-transform: lowercase;
-  font-family:"meddon", cursive;
-  font-size: 300%;
-  font-weight: 400;
-  text-align: center;
-  margin-top: 0;
-  color: white;
-}
-
-.container {
+header.masthead {
   position: relative;
-  overflow: hidden;
+  background-image: url(https://marketplace.canva.com/MACAg1XSd9Y/1/0/thumbnail_large/canva-red-holiday-christmas-cookies-desserts-photo-collage-MACAg1XSd9Y.jpg);
+  background-size: cover;
+}
   
-}
+header.masthead .overlay {
+    position: absolute;
+    background-color: white;
+    height: 90%;
+    width: 20%;
+    top: 0;
+    left: 0;
+    opacity: 0.1; 
+  }
 
-.container * {
- 
-  -webkit-transition: all 0.35s ease;
-  transition: all 0.35s ease;
-}
 
-.container figcaption {
-  font-family: 'Playfair Display', sans-serif;
-  font-size: 400%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  opacity: 0.9;
-  background-color: black;
-  width: 40%;
-  transform: translateX(110%);
-}
-.container figcaption:before {
-  position: absolute;
-  top: 49%;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  right: 100%;
-  content: '';
-  width: 0;
-  height: 50;
-  border-style: solid;
-  border-width: 500px 500px 500px 0;
-  border-color: transparent rgba(0,0,0, 0.9) transparent transparent;
-}
-.container:after {
-  position: absolute;
-  bottom: 50%;
-  right: 40%;
-  content: '';
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 500px 500px 0 500px;
-  border-color: rgba(26,0,0, 0.9) transparent transparent transparent;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  -webkit-transition: all 0.35s ease;
-  transition: all 0.35s ease;
+header.masthead {
+  padding-top: 29%;
+  padding-bottom: 30%; 
+    }
+
+header.masthead h2 {
+  font-size: 3rem;
+  margin-bottom: 0;
+} 
+
+header .btn{
+  background-color: red;
+  border-color: transparent;
 }
 
 
-.container ul {
-  font-family: 'Jolly Lodger', cursive;
-  font-size: 10px;
+
+
+.container h3{
+  padding-top: 2%;
   text-align: center;
- 
+  font-family:'Sacramento',cursive;
+  font-size: 3em;
+  padding-bottom: 2%;
 }
 
 
-.container:hover:after,
-.container.hover:after,
-.container:hover figcaption,
-.container.hover figcaption,
-.container:hover i,
-.container.hover i {
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  opacity: 0.9;
-}

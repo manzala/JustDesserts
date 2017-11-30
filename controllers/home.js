@@ -42,7 +42,6 @@ router.get('/sign-up', (req, res) => {
   res.send('in sign-up')
 })
 
-// Todo: fix post request for sign-up
 
 // This is accessed via fetch and '/api/sign-up'
  router.post('/sign-up', (req,res)=>{
@@ -68,6 +67,9 @@ router.get('/sign-up', (req, res) => {
  });
 
 
+router.get('/login', (req, res) => {
+  res.send('in login ')
+})
 
 router.post('/login', passport.authenticate('local'), (req,res) =>{
   res.json({ message: 'Logged IN'});

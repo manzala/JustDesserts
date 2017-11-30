@@ -10,6 +10,6 @@ const router = express.Router();
 
 //router.use('/alt', require('./alt'));
 router.use('/api', require('./home'));
-//router.use('/api', require('./sign-up'))
+//router.use('/api/login', require('./login'))
 
 module.exports = router;

@@ -6,6 +6,7 @@ import './App.css';
 
 import { Profile } from './profile'
 
+
 class App extends Component {
 constructor() {
     super();
@@ -24,10 +25,26 @@ constructor() {
   }
 
   
-  handleClick(event) {
+handleClick(event) {
     event.preventDefault();
-    const { email, password } = this.state
+    const { email, password } = this.state 
+    
+    console.log('in handleClick');
+    console.log(this.state);
+
+    fetch('/api/login', {
+      method: "POST",
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+      headers: {
+        "Content-Type":"application/json"
+      }})
+    .then(response => response.json())
+    .then(body => console.log(body)).catch(()=> console.log("AGAIN ERROR"))
   }
+  
 
   render() {
     return (
@@ -38,7 +55,7 @@ constructor() {
               <h3>Sign in Here</h3>
                 <form  onSubmit={this.handleClick}>
                       <div className = "inputBox">
-                         <input type="text" name="email" placeholder="email" onChange={(e) => this.handleChange(e.target.value, 'email')}/>
+                         <input type="text" name="email" placeholder="Email" onChange={(e) => this.handleChange(e.target.value, 'email')}/>
                         <span><i className="fa fa-user" aria-hidden="true"></i></span>
                       </div>
                           <div className = "inputBox">
@@ -48,7 +65,7 @@ constructor() {
                       <div>
                       <label><input type="checkbox" /> Rember Me</label>
                       </div>
-                   <input type="submit" name="" value="Login" />
+                   <input type="submit" name="" value="Login" onClick={(e)=> this.handleClick(e)}/>
                </form>
             <a href= "#">Forgot Password?</a>
                 <br />

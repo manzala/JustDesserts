@@ -11,7 +11,7 @@ function getSequelize() {
   if (config.use_env_variable) {
     return new Sequelize(process.env[config.use_env_variable]);
   }
-  return new Sequelize(config.database, config.username, config.password, config);
+  return new Sequelize(config.database, config.email, config.password, config);
 }
 
 const sequelize = getSequelize();
