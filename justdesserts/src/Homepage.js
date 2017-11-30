@@ -21,7 +21,6 @@ class Homepage extends Component{
           <a className="btn btn-primary" href="./login">Sign In</a>
         </nav>
         <header className="masthead text-white text-center">
-          <div className="overlay" />
           <div className="container">
             <div className="row">
               <div className="col-xl-9 mx-auto">

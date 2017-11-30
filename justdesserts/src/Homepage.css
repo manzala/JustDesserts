@@ -49,11 +49,11 @@ nav .btn{
 
 header.masthead {
   position: relative;
-  background-image: url(https://marketplace.canva.com/MACAg1XSd9Y/1/0/thumbnail_large/canva-red-holiday-christmas-cookies-desserts-photo-collage-MACAg1XSd9Y.jpg);
+  background-image: url(./images/backgroundsweet.jpg);
   background-size: cover;
 }
   
-header.masthead .overlay {
+header.masthead {
     position: absolute;
     background-color: white;
     height: 90%;
