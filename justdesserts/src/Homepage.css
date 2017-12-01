@@ -12,6 +12,12 @@ body
 
 
 }
+@media only screen and (min-width: 400px) {
+    body { 
+       font-size: 2em;
+    }
+}
+
 .Homepage
 {
   background-color:#fff;
@@ -51,7 +57,16 @@ header.masthead {
   position: relative;
   background-image: url(./images/backgroundsweet.jpg);
   background-size: cover;
+  background-repeat:no-repeat;
 }
+/* For width 400px and larger: */
+@media only screen and (min-width: 400px) {
+    header.masthead { 
+       background-image: url(./images/backgroundsweet.jpg); 
+      
+    }
+}
+
   
 header.masthead .overlay {
     position: absolute;
@@ -89,5 +104,7 @@ header .btn{
   font-size: 3em;
   padding-bottom: 2%;
 }
+
+
 
 

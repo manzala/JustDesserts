@@ -6,14 +6,14 @@ module.exports = {
 	registerRouter(){
 		const router = express.Router();
 
-		router.get('/', Redirect.ifLoggedIn('/profile'), this.index);
+		router.get('/api', Redirect.ifLoggedIn('/profile'), this.index);
 		router.post('/', this.login);
 
 		return router;
 	},
 
 	index(req, res){
-		res.render('profile', {error: req.flash('error')});
+		res.render('/profile', {error: req.flash('error')});
 	},
 
 	login(req, res){

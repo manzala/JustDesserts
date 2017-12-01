@@ -53,7 +53,7 @@ router.get('/sign-up', (req, res) => {
     firstName: req.body.firstName,
     lastName: req.body.lastName,
     email: req.body.email,
-    password_hash: req.body.password,
+    password: req.body.password,
    }).then((user) => {
     console.log("in then() function")
      req.login(user,() => {
@@ -75,6 +75,7 @@ router.post('/login', passport.authenticate('local'), (req,res) =>{
   res.json({ message: 'Logged IN'});
   console.log('At Router');
 })
+
 
 // router.get('profile', (res,req)=>{
 //   passport.redirectIfNotLoggedIn('../justdesserts/src/App.js'),
