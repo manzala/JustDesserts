@@ -53,7 +53,7 @@ handleClick(event) {
           <div className = "glass">
             <img src= {cupcake} className = "user" />
               <h3>Sign in Here</h3>
-                <form  onSubmit={this.handleClick}>
+                <form action = "/api/login" onSubmit={this.handleClick}>
                       <div className = "inputBox">
                          <input type="text" name="email" placeholder="Email" onChange={(e) => this.handleChange(e.target.value, 'email')}/>
                         <span><i className="fa fa-user" aria-hidden="true"></i></span>
