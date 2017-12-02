@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import cupcake from './images/cupcake.png'
 import './App.css';
 
@@ -12,6 +13,7 @@ constructor() {
       lastName: '',
       email: '',
       password: '',
+      isLoggedIn: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -40,12 +42,25 @@ constructor() {
       }),
       headers: {
         "Content-Type":"application/json"
-      }})
-    .then(response => response.json())
+      },
+      credentials: 'include',
+    })
+    .then(response => {
+      if(response.status >= 400){
+        console.log ('ERROR loggin in');
+        return;
+      }else{
+        this.setState ({ isLoggedIn: true })
+        return response.json();
+      }
+    })
     .then(body => console.log(body)).catch(()=> console.log("EOROROROR"))
   }
 
   render() { 
+    if(this.state.isLoggedIn){
+      return <Redirect to="/blog"/>;
+    }
     return (
         <div className="Signup">
             <div className = "loginBox">
@@ -70,7 +85,7 @@ constructor() {
                             <span><i className="fa fa-lock" aria-hidden="true"></i></span>
                         </div>
                         <input type="submit" value="Signup"/>
-
+                        <Link to="/login">Back </Link>
                     </form>
                     
                 </div>

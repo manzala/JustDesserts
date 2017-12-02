@@ -37,9 +37,9 @@ module.exports = (sequelize, DataTypes) => {
     },
   })
 
- // User.associate = (models) => {
-   // models.User.hasMany(models.Post);
-  //}
+  User.associate = (models) => {
+    models.User.hasMany(models.Post);
+  }
 
   User.beforeCreate((user) =>
     new sequelize.Promise((resolve) => {
