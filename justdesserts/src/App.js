@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import cupcake from './images/cupcake.png';
 import './App.css';
@@ -11,6 +11,7 @@ constructor() {
     this.state = {
       email: '',
       password: '',
+      isLoggedIn: false,
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -38,13 +39,29 @@ handleClick(event) {
       }),
       headers: {
         "Content-Type":"application/json"
-      }})
-    .then(response => response.json())
+      },
+      credentials: 'include',
+    })
+    .then(response => { 
+
+      if(response.status >= 400) {
+        console.log('ERROR logging in');
+        return;
+      } else {
+        this.setState({ isLoggedIn: true })
+        return response.json();
+      }
+      
+    })
     .then(body => console.log(body)).catch(()=> console.log("AGAIN ERROR"))
   }
   
 
   render() {
+    if(this.state.isLoggedIn) {
+      return <Redirect to="/profile" />;
+    }
+
     return (
       <div className="App">
       <meta name="viewport" content="width=device-width, initial-scale=1" />
