@@ -29,11 +29,17 @@ router.post('/', (req, res) => {
 
 	// this is to create a post for the logged in user
 	req.user.createPost({
-		
-	}).then((post) => {
+		zip : req.body.zipcode,
+		title: req.body.title,
+		tag: req.body.tag,
+		description: req.body.description,
 
-	})
-})
+	}).then((post) => {
+		console.log("in then(post) function")
+	}).catch((errors) => {
+		res.json({message: "ERRORS!!"})
+	});
+});
 
 
 module.exports = router;
