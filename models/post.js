@@ -1,6 +1,5 @@
 //All the POSTS by all users
 
-const bcrpt = require('bcrypt-nodejs');
 
 module.exports =(sequelize, DataTypes) => {
 	const Post = sequelize.define('post', {

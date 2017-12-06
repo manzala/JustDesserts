@@ -7,7 +7,7 @@ module.exports = {
     const router = express.Router();
 
     router.get('/', this.index);
-    router.get('/', this.submit);
+    router.post('/', this.submit);
 
     return router;
   },
@@ -23,10 +23,10 @@ module.exports = {
       password: req.body.password,
     }).then((user) => {
       req.login(user, () =>
-          res.redirect('/profile')
+          res.sendStatus(200)
        );
     }).catch(() => {
-      res.render('sign-up');
+      res.sendStatus(401);
     });
   },
 };

@@ -6,7 +6,11 @@ const router = express.Router();
 
 // this route is: '/api/posts/'
 router.get('/', (req, res) => {
-	models.Post.findAll().then((allPosts) => {
+	models.Post.findAll({
+		include: [{
+			model: models.User
+		}]
+	}).then((allPosts) => {
 		res.json(allPosts);
 	});
 });
@@ -37,9 +41,11 @@ router.post('/', (req, res) => {
 	}).then((post) => {
 		console.log("in then(post) function")
 	}).catch((errors) => {
-		res.json({message: "ERRORS!!"})
+		res.status(400).json({message: "ERRORS!!"})
 	});
 });
+
+
 
 
 module.exports = router;

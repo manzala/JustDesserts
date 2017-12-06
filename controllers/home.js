@@ -62,7 +62,7 @@ router.get('/sign-up', (req, res) => {
       res.json({ message: "It WORKED", user: user});
      });
   }).catch((errors) => {
-    res.json({message: "ERROR"});
+    res.status(401).json({message: "ERROR"});
    });
  });
 

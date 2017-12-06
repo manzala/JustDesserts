@@ -4,10 +4,52 @@ import { Link, Redirect } from 'react-router-dom';
 import './blog.css';
 
 class blog extends Component {
+	constructor(){
+		super();
+		this.state ={
+			title: '',
+			zipcode:'',
+			tag:'',
+			description:'',
+		};
+		
+		this.handleClick = this.handleClick.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
+
+
+	handleChange(value, fieldName){
+		this.setState({[fieldName]:value});
+	}
+
+	handleClick(event){
+		event.preventDefault();
+		const{title, zipcode, tag, description} = this.state
+
+		console.log("in blog.js handleClick");
+		console.log(this.state);
+
+
+		fetch('/api/posts',{
+			method: "POST",
+			body: JSON.stringify({
+				title,
+				zipcode,
+				tag,
+				description,
+			}),
+			headers: {
+        		"Content-Type":"application/json"
+      		},
+			credentials: 'include',
+				
+		})
+		 .then(body => console.log(body)).catch(()=> console.log("error"))
+
+	}
 	render(){
 		return (
 			<div>
-        <title>W3.CSS Template</title>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -17,7 +59,6 @@ class blog extends Component {
         {/* Navbar */}
         <div className="w3-top">
           <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
-            <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i className="fa fa-bars" /></a>
             <a href="/" className="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i className="fa fa-home w3-margin-right" />Just Desserts</a>
             <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i className="fa fa-globe" /></a>
             <div className="w3-dropdown-hover w3-hide-small">
@@ -26,15 +67,7 @@ class blog extends Component {
          
               </div>
             </div>
-            <a href="#" className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white" title="My Account"><img src="" className="w3-circle" style={{height: 25, width: 25}}  /></a>
           </div>
-        </div>
-        {/* Navbar on small screens */}
-        <div id="navDemo" className="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">Link 1</a>
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">Link 2</a>
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">Link 3</a>
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">My Profile</a>
         </div>
         {/* Page Container */}
         <div className="w3-container w3-content" style={{maxWidth: 1400, marginTop: 80}}>    
@@ -46,7 +79,7 @@ class blog extends Component {
               <div className="w3-card w3-round w3-white">
                 <div className="w3-container">
                   <h4 className="w3-center">My Profile</h4>
-                  <p className="w3-center"><img src="" className="w3-circle" style={{height: 106, width: 106}} alt="" /></p>
+                  <p className="w3-center"><img src="./images/cupcake.png" className="w3-circle" style={{height: 95, width: 95}} alt="" /></p>
                   <hr />      
                 </div>
               </div>
@@ -54,27 +87,12 @@ class blog extends Component {
               {/* Accordion */}
               <div className="w3-card w3-round">
                 <div className="w3-white">
-                  <button onclick="myFunction('Demo3')" className="w3-button w3-block w3-theme-l1 w3-left-align"><i className="fa fa-users fa-fw w3-margin-right" /> My Posts</button>
+                  <button className="w3-button w3-block w3-theme-l1 w3-left-align"><i className="fa fa-users fa-fw w3-margin-right" /> My Profile</button>
                   <div id="Demo3" className="w3-hide w3-container">
                     <div className="w3-row-padding">
                       <br />
                       <div className="w3-half">
                         <img src="" style={{width: '100%'}} className="w3-margin-bottom" />
-                      </div>
-                      <div className="w3-half">
-                        <img src="" style={{width: '100%'}} className="w3-margin-bottom" />
-                      </div>
-                      <div className="w3-half">
-                        <img src="" style={{width: '100%'}} className="w3-margin-bottom" />
-                      </div>
-                      <div className="w3-half">
-                        <img src="/w3images/forest.jpg" style={{width: '100%'}} className="w3-margin-bottom" />
-                      </div>
-                      <div className="w3-half">
-                        <img src="/w3images/nature.jpg" style={{width: '100%'}} className="w3-margin-bottom" />
-                      </div>
-                      <div className="w3-half">
-                        <img src="/w3images/fjords.jpg" style={{width: '100%'}} className="w3-margin-bottom" />
                       </div>
                     </div>
                   </div>
@@ -91,16 +109,27 @@ class blog extends Component {
                 <div className="w3-col m12">
                   <div className="w3-card w3-round w3-white">
                     <div className="w3-container w3-padding">
+                      <div className = "Tags"> 
                       <h6 className="w3-opacity">Just Desserts Posts</h6>
-                      <p contentEditable="true" className="w3-border w3-padding">Status: </p>
-                      <button type="button" className="w3-button w3-theme"><i className="fa fa-pencil" /> &nbsp;Post</button> 
+             
+                  {/*Post FieldName*/}
+                   <form onSubmit={this.handleClick}>
+                      <input type="text" name="title" placeholder="title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
+                       <input type="text" name="zipcode" placeholder="zipcode" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
+                       <input type="text" name="tag" placeholder="tag" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
+                       <input type="text" name="description" placeholder="description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
+                        <input type="submit" className="w3-button w3-theme " name="" value="Post" onClick={(e)=> this.handleClick(e)}/>
+                        {/*<button type="button" className="w3-button w3-theme"><i className="fa fa-pencil" /> Post</button> */}
+                    </form>   
+                   {/*End of Post FieldName*/}
+
+                      
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="w3-container w3-card w3-white w3-round w3-margin"><br />
-                <img src="/w3images/avatar2.png" alt="" className="w3-left w3-circle w3-margin-right" style={{width: 60}} />
-                
+              <div className="w3-container w3-card w3-white w3-round w3-margin"><br />  
                 <hr className="w3-clear" />
                 <div className="w3-row-padding" style={{margin: '0 -16px'}}>
                   <div className="w3-half">
@@ -110,8 +139,8 @@ class blog extends Component {
                     <img src="" style={{width: '100%'}} alt="" className="w3-margin-bottom" />
                   </div>
                 </div>
-                <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> &nbsp;Like</button> 
-                <button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> &nbsp;Comment</button> 
+                <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> Like</button> 
+                <button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> Comment</button> 
               </div>
             
               {/* End Middle Column */}
@@ -129,6 +158,5 @@ class blog extends Component {
 		}
 
 	}
-
 
 export default blog;

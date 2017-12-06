@@ -15,7 +15,7 @@ class Homepage extends Component{
             <title>Just Desserts</title> 
                <nav className="navbar navbar-light bg-light fixed-top" role="navigation">
           <h1>
-            <a className="navbar-brand" href="Homepage.js">
+            <a className="navbar-brand" href="/">
               <label>J</label>ust<span></span><label>D</label>esserts</a>
           </h1>
           <a className="btn btn-primary" href="./login">Sign In</a>
