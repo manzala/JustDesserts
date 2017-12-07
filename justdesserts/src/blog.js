@@ -116,8 +116,11 @@ class blog extends Component {
                    <form onSubmit={this.handleClick}>
                       <input type="text" name="title" placeholder="title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
                        <input type="text" name="zipcode" placeholder="zipcode" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
+                       <br/>
                        <input type="text" name="tag" placeholder="tag" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
                        <input type="text" name="description" placeholder="description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
+                       <br/>
+                       <i> className="fa fa-pencil" <i/>
                         <input type="submit" className="w3-button w3-theme " name="" value="Post" onClick={(e)=> this.handleClick(e)}/>
                         {/*<button type="button" className="w3-button w3-theme"><i className="fa fa-pencil" /> Post</button> */}
                     </form>   

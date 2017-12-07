@@ -51,6 +51,7 @@ constructor() {
         return;
       }else{
         this.setState ({ isLoggedIn: true })
+        console.log("No Error");
         return response.json();
       }
     })
