@@ -79,7 +79,7 @@ class blog extends Component {
               <div className="w3-card w3-round w3-white">
                 <div className="w3-container">
                   <h4 className="w3-center">My Profile</h4>
-                  <p className="w3-center"><img src="./images/cupcake.png" className="w3-circle" style={{height: 95, width: 95}} alt="" /></p>
+                  <p className="w3-center"><img src="./images/cupcake.png" className="w3-circle" style={{height:106, width:106}} alt="Avatar"/></p>
                   <hr />      
                 </div>
               </div>
@@ -120,7 +120,7 @@ class blog extends Component {
                        <input type="text" name="tag" placeholder="tag" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
                        <input type="text" name="description" placeholder="description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
                        <br/>
-                       <i> className="fa fa-pencil" <i/>
+                    
                         <input type="submit" className="w3-button w3-theme " name="" value="Post" onClick={(e)=> this.handleClick(e)}/>
                         {/*<button type="button" className="w3-button w3-theme"><i className="fa fa-pencil" /> Post</button> */}
                     </form>   
