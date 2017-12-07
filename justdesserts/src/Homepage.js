@@ -24,7 +24,9 @@ class Homepage extends Component{
           <div className="container">
             <div className="row">
               <div className="col-xl-9 mx-auto">
-                <h2 className="mb-5">Looking for something sweet? </h2>
+                <div className ="bannerTitle">
+                  <h2 className="mb-5">Looking for something sweet? </h2>
+                </div>
               </div>
               <div className="col-md-10 col-lg-8 col-xl-7 mx-auto">
                 <form>
