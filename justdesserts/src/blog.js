@@ -14,13 +14,10 @@ class blog extends Component {
       description:'',
       postList: []
     };
-    
+
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
-
-    // this.getAllPosts = this.getAllPosts.bind(this);
-
-    
+    this.getAllPosts = this.getAllPosts.bind(this);
   }
 
   componentDidMount() {
@@ -37,7 +34,7 @@ class blog extends Component {
     console.log('getting the posts....');
     fetch('/api/posts',{
       headers: {
-        "Content-Type":"application/json"
+        "Content-Type": "application/json"
       },
       credentials: 'include',
     })
@@ -45,6 +42,7 @@ class blog extends Component {
     .then(posts => {
       console.log('GOT the posts....');
       console.log(posts);
+      // console.log(this.setState)
       this.setState({
         postList: posts
       })
@@ -53,7 +51,6 @@ class blog extends Component {
 
   handleClick(event){
     event.preventDefault();
-    this.getAllPosts();
     const{title, zipcode, tag, description} = this.state
 
     console.log("in blog.js handleClick");
@@ -71,7 +68,7 @@ class blog extends Component {
       },
       credentials: 'include',
     })
-    .then((response) => { 
+    .then((response) => {
       if(response.status >= 400) {
         console.log('ERROR NOT POSTED');
         return;
@@ -96,10 +93,10 @@ class blog extends Component {
     // .catch(()=> console.log("error"))
 
 
-        
 
 
-      
+
+
 
   }
 
@@ -118,15 +115,15 @@ class blog extends Component {
             <a href="/" className="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i className="fa fa-home w3-margin-right" />Just Desserts</a>
             <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i className="fa fa-globe" /></a>
             <div className="w3-dropdown-hover w3-hide-small">
-              <button className="w3-button w3-padding-large" title="Notifications"><i className="fa fa-bell" /></button>     
+              <button className="w3-button w3-padding-large" title="Notifications"><i className="fa fa-bell" /></button>
               <div className="w3-dropdown-content w3-card-4 w3-bar-block" style={{width: 300}}>
-         
+
               </div>
             </div>
           </div>
         </div>
         {/* Page Container */}
-        <div className="w3-container w3-content" style={{maxWidth: 1400, marginTop: 80}}>    
+        <div className="w3-container w3-content" style={{maxWidth: 1400, marginTop: 80}}>
           {/* The Grid */}
           <div className="w3-row">
             {/* Left Column */}
@@ -136,7 +133,7 @@ class blog extends Component {
                 <div className="w3-container">
                   <h4 className="w3-center">My Profile</h4>
                   <p className="w3-center"><img src="" className="w3-circle" style={{height:106, width:106}} alt="Avatar"/></p>
-                  <hr />      
+                  <hr />
                 </div>
               </div>
               <br />
@@ -152,22 +149,22 @@ class blog extends Component {
                       </div>
                     </div>
                   </div>
-                </div>      
+                </div>
               </div>
               <br />
-              
+
 
               {/* End Left Column */}
             </div>
             {/* Middle Column */}
             <div className="w3-col m7">
-              <div className="w3-row-padding">  
+              <div className="w3-row-padding">
                 <div className="w3-col m12">
                   <div className="w3-card w3-round w3-white">
                     <div className="w3-container w3-padding">
-                      <div className = "Tags"> 
+                      <div className = "Tags">
                       <h6 className="w3-opacity">Just Desserts Posts</h6>
-             
+
                   {/*Post FieldName*/}
                    <form onSubmit={this.handleClick}>
                       <input type="text" name="title" placeholder="title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
@@ -176,19 +173,19 @@ class blog extends Component {
                        <input type="text" name="tag" placeholder="tag" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
                        <input type="text" name="description" placeholder="description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
                        <br/>
-                    
+
                         <input type="submit" className="w3-button w3-theme " name="" value="Post" onClick={(e)=> this.handleClick(e)}/>
                         {/*<button type="button" className="w3-button w3-theme"><i className="fa fa-pencil" /> Post</button> */}
-                    </form>   
+                    </form>
                    {/*End of Post FieldName*/}
 
-                      
+
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="w3-container w3-card w3-white w3-round w3-margin"><br />  
+              <div className="w3-container w3-card w3-white w3-round w3-margin"><br />
                 <hr className="w3-clear" />
                 <div className="w3-row-padding" style={{margin: '0 -16px'}}>
                   <div className="w3-half">
@@ -200,18 +197,18 @@ class blog extends Component {
                     <img src="" style={{width: '100%'}} alt="" className="w3-margin-bottom" />
                   </div>
                 </div>
-                <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> Like</button> 
+                <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> Like</button>
                 {/**<button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> Comment</button>*/}
               </div>
-            
+
               {/* End Middle Column */}
             </div>
-       
+
             {/* End Grid */}
           </div>
           {/* End Page Container */}
         </div>
-    
+
       </div>
       );
     }
@@ -220,6 +217,6 @@ class blog extends Component {
 
 
 
-  
+
 
 export default blog;

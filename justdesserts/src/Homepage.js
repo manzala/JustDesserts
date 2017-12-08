@@ -55,7 +55,7 @@ class Homepage extends Component{
             </div>
             <div className="col-md-2" align="center">
               <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/20200-200.png" style={{width: 100, height: 100}} />
-              <p>Select your favorite dessert</p>
+              <p>Locate your favorite dessert</p>
             </div>
             <div className="col-md-2" align="center" style={{paddingTop: 50}}>
               <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-right-128.png" style={{width: 50, height: 50}} />

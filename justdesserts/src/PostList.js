@@ -3,47 +3,27 @@ import React, { Component } from 'react';
 const Post = (props) => {
   return (
     <div>
-      {props.data}
+      <p>Title: {props.data.title}</p>
+      <p>description: {props.data.description}</p>
+      <p>zip: {props.data.zip}</p>
+      <p>tag: {props.data.tag}</p>
     </div>
   );
 }
 
-class PostList extends Component{
-    constructor(props){
-      super(props);
 
-      console.log('in PostList constructor')
-      console.log(props)
-
-      this.state={
-        posts: props.posts
-      };
-     
-      this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(value, fieldName){
-    this.setState({[fieldName]:value});
-
-  }
-
-  render(){
-      console.log(this.state);
-      return (
-        <div className="list-group">
-        <div>Test</div>
-        {
-          this.state.posts.map((post, index) => {
-            return <Post data={post}  key={index} /> 
-          })
-        }
-      </div>
+const PostList = (props) => {
+  console.log('in functional proplist')
+  console.log(props);
+  return (
+    <div className="list-group">
+      <div>Test</div>
+      { props.posts.map(p => <Post data={p} /> ) }
+    </div>
+  );
+}
 
 
-      )
-  }
-
-  }
 
 export default PostList;
 
