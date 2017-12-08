@@ -40,6 +40,7 @@ router.post('/', (req, res) => {
 
 	}).then((post) => {
 		console.log("in then(post) function")
+		res.status(200).json({message: "success"})
 	}).catch((errors) => {
 		res.status(400).json({message: "ERRORS!!"})
 	});

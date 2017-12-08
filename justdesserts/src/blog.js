@@ -1,55 +1,111 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
+import PostList from './PostList';
 
 import './blog.css';
 
 class blog extends Component {
-	constructor(){
-		super();
-		this.state ={
-			title: '',
-			zipcode:'',
-			tag:'',
-			description:'',
-		};
-		
-		this.handleClick = this.handleClick.bind(this);
-		this.handleChange = this.handleChange.bind(this);
-	}
+  constructor(){
+    super();
+    this.state ={
+      title: '',
+      zipcode:'',
+      tag:'',
+      description:'',
+      postList: []
+    };
+    
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
+    // this.getAllPosts = this.getAllPosts.bind(this);
+
+    
+  }
+
+  componentDidMount() {
+    this.getAllPosts();
+  }
 
 
-	handleChange(value, fieldName){
-		this.setState({[fieldName]:value});
-	}
-
-	handleClick(event){
-		event.preventDefault();
-		const{title, zipcode, tag, description} = this.state
-
-		console.log("in blog.js handleClick");
-		console.log(this.state);
+  handleChange(value, fieldName){
+    this.setState({[fieldName]:value});
+  }
 
 
-		fetch('/api/posts',{
-			method: "POST",
-			body: JSON.stringify({
-				title,
-				zipcode,
-				tag,
-				description,
-			}),
-			headers: {
-        		"Content-Type":"application/json"
-      		},
-			credentials: 'include',
-				
-		})
-		 .then(body => console.log(body)).catch(()=> console.log("error"))
+  getAllPosts() {
+    console.log('getting the posts....');
+    fetch('/api/posts',{
+      headers: {
+        "Content-Type":"application/json"
+      },
+      credentials: 'include',
+    })
+    .then(res => res.json())
+    .then(posts => {
+      console.log('GOT the posts....');
+      console.log(posts);
+      this.setState({
+        postList: posts
+      })
+    })
+  }
 
-	}
-	render(){
-		return (
-			<div>
+  handleClick(event){
+    event.preventDefault();
+    this.getAllPosts();
+    const{title, zipcode, tag, description} = this.state
+
+    console.log("in blog.js handleClick");
+
+    fetch('/api/posts',{
+      method: "POST",
+      body: JSON.stringify({
+        title,
+        zipcode,
+        tag,
+        description,
+      }),
+      headers: {
+        "Content-Type":"application/json"
+      },
+      credentials: 'include',
+    })
+    .then((response) => { 
+      if(response.status >= 400) {
+        console.log('ERROR NOT POSTED');
+        return;
+      }
+
+      console.log('making next fetch')
+      this.getAllPosts();
+      return response.json();
+    })
+    .then(body => {
+      console.log('the body: ')
+      console.log(body);
+    })
+    .catch(err => console.log(err))
+
+
+
+
+
+    // .then(body => console.log(body))
+    // .then(response => this.processPosts)) //NOT SURE!!!
+    // .catch(()=> console.log("error"))
+
+
+        
+
+
+      
+
+  }
+
+  render(){
+    return (
+      <div>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
@@ -79,7 +135,7 @@ class blog extends Component {
               <div className="w3-card w3-round w3-white">
                 <div className="w3-container">
                   <h4 className="w3-center">My Profile</h4>
-                  <p className="w3-center"><img src="./images/cupcake.png" className="w3-circle" style={{height:106, width:106}} alt="Avatar"/></p>
+                  <p className="w3-center"><img src="" className="w3-circle" style={{height:106, width:106}} alt="Avatar"/></p>
                   <hr />      
                 </div>
               </div>
@@ -105,7 +161,7 @@ class blog extends Component {
             </div>
             {/* Middle Column */}
             <div className="w3-col m7">
-              <div className="w3-row-padding">
+              <div className="w3-row-padding">  
                 <div className="w3-col m12">
                   <div className="w3-card w3-round w3-white">
                     <div className="w3-container w3-padding">
@@ -136,6 +192,8 @@ class blog extends Component {
                 <hr className="w3-clear" />
                 <div className="w3-row-padding" style={{margin: '0 -16px'}}>
                   <div className="w3-half">
+
+                  <PostList posts={this.state.postList} />
                     <img src="" style={{width: '100%'}} alt="" className="w3-margin-bottom" />
                   </div>
                   <div className="w3-half">
@@ -143,7 +201,7 @@ class blog extends Component {
                   </div>
                 </div>
                 <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> Like</button> 
-                <button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> Comment</button> 
+                {/**<button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> Comment</button>*/}
               </div>
             
               {/* End Middle Column */}
@@ -153,13 +211,15 @@ class blog extends Component {
           </div>
           {/* End Page Container */}
         </div>
-        <br />
-        {/* Footer */}
-        
+    
       </div>
-			);
-		}
+      );
+    }
 
-	}
+  }
+
+
+
+  
 
 export default blog;
