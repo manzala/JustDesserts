@@ -9,8 +9,19 @@ body
 
 
 }
-.Tags{
+.inputBox
+{
 
+  position: relative;
+
+}
+
+.inputBox span
+{
+
+  position: absolute;
+  top: 10px;
+  color: #262626;
 
 }
 
@@ -21,3 +32,6 @@ body
        font-size: 2em;
     }
 }
+
+
+

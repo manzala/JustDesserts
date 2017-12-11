@@ -21,8 +21,9 @@ class Homepage extends Component{
           <a className="btn btn-primary" href="./login">Sign In</a>
         </nav>
         <header className="masthead text-white text-center">
-          <div className="container">
-            <div className="row">
+        <div className="overlay">
+            <div className="container">
+              <div className="row">
               <div className="col-xl-9 mx-auto">
                 <div className ="bannerTitle">
                   <h2 className="mb-5">Looking for something sweet? </h2>
@@ -42,6 +43,7 @@ class Homepage extends Component{
               </div>
             </div>
           </div>
+        </div>
         </header>
         <div className="container">
           <h3> Finding desserts that fit your dietary needs has never been easier </h3>
@@ -55,7 +57,7 @@ class Homepage extends Component{
             </div>
             <div className="col-md-2" align="center">
               <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/20200-200.png" style={{width: 100, height: 100}} />
-              <p>Locate your favorite dessert</p>
+              <p>Select your favorite dessert</p>
             </div>
             <div className="col-md-2" align="center" style={{paddingTop: 50}}>
               <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-right-128.png" style={{width: 50, height: 50}} />
@@ -71,4 +73,4 @@ class Homepage extends Component{
   }
 };
 
-export default Homepage;
+export default Homepage

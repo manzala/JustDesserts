@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 const Post = (props) => {
   return (
     <div>
-      <p>Title: {props.data.title}</p>
-      <p>description: {props.data.description}</p>
-      <p>zip: {props.data.zip}</p>
-      <p>tag: {props.data.tag}</p>
+      <h2>Title: {props.data.title}</h2>
+      <p>Description: {props.data.description}</p>
+      <p>Zip: {props.data.zip}</p>
+      <p>Tag: {props.data.tag}</p>
     </div>
   );
 }
@@ -17,7 +17,7 @@ const PostList = (props) => {
   console.log(props);
   return (
     <div className="list-group">
-      <div>Test</div>
+     
       { props.posts.map(p => <Post data={p} /> ) }
     </div>
   );
