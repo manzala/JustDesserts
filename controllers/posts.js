@@ -7,6 +7,9 @@ const router = express.Router();
 // this route is: '/api/posts/'
 router.get('/', (req, res) => {
 	models.Post.findAll({
+		where: {
+			userId: userId,
+		}
 		include: [{
 			model: models.User
 		}]
@@ -25,6 +28,7 @@ router.get('/zip/:zipcode', (req, res) => {
 		res.json(allPosts);
 	});
 });
+
 
 
 router.post('/', (req, res) => {

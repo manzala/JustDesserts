@@ -140,7 +140,7 @@ class blog extends Component {
               {/* Accordion */}
               <div className="w3-card w3-round">
                 <div className="w3-white">
-                  <button className="w3-button w3-block w3-theme-l1 w3-left-align"><a href="./profile"><i className="fa fa-users fa-fw w3-margin-right" /> My Profile </a></button>
+                  <button className="w3-button w3-block w3-theme-l1 w3-left-align"><a href="./Profile"><i className="fa fa-users fa-fw w3-margin-right" /> My Profile </a></button>
                   <div id="Demo3" className="w3-hide w3-container">
                     <div className="w3-row-padding">
                       <br />
@@ -167,14 +167,15 @@ class blog extends Component {
 
                   {/*Post FieldName*/}
                    <form onSubmit={this.handleClick}>
+                   <br styles="clear:both" />
                    <div className = "inputBox">
                       <input type="text" name="title" placeholder="Title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
                    </div>
                    <div className = "inputBox">   
-                       <input type="text" name="description" placeholder="Description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
+                       <textarea type="text" name="description" placeholder="Description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
                      </div>
                    <div className = "inputBox">   
-                       <input type="text" name="zipcode" placeholder="Zipcode" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
+                       <input type="text" name="zipcode" placeholder="Zipcode" maxlength="5" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
                        <input type="text" name="tag" placeholder="Tag" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
 
 
