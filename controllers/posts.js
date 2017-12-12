@@ -4,12 +4,12 @@ const models = require('../models');
 const router = express.Router();
 
 
-// this route is: '/api/posts/'
+this route is: '/api/posts/'
 router.get('/', (req, res) => {
 	models.Post.findAll({
 		where: {
 			userId: userId,
-		}
+		},
 		include: [{
 			model: models.User
 		}]
@@ -17,6 +17,17 @@ router.get('/', (req, res) => {
 		res.json(allPosts);
 	});
 });
+
+router.get('/', (req, res) => {
+	models.Post.findAll({
+		include: [{
+			model: models.User
+		}]
+	}).then((allPosts) => {
+		res.json(allPosts);
+	});
+});
+
 
 // this route is: '/api/posts/zip/:zipcode'
 router.get('/zip/:zipcode', (req, res) => {
