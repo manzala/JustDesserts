@@ -60,6 +60,28 @@ router.get('/zip/:zipcode', (req, res) => {
 });
 
 
+router.get('/tag/:tag', (req,res) => {
+	models.Post.findAll({
+		where:{
+			tag: req.params.tag
+		}
+	}).then((allPosts) => {
+		res.json(allPosts);
+	})
+} )
+
+
+router.post('/search', (req, res) => {
+	req.user.createPost({
+		tag:req.body.tag,
+	}).then((post) => {
+		console.log("in function")
+		res.status(200).json({message: 'sucess'})
+	}).catch((errors)=> {
+		res.status(400).json({message:"error"})
+	});
+});
+
 
 router.post('/', (req, res) => {
 	// this is for creating general posts

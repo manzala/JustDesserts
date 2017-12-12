@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PostList from './PostList';
+import Search from './Search';
 
 import './blog.css';
 
@@ -12,17 +13,23 @@ class blog extends Component {
       zipcode:'',
       tag:'',
       description:'',
-      postList: []
+      postList: [],
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getAllPosts = this.getAllPosts.bind(this);
+   // this.getAllSearch = this.getAllSearch.bind(this);
   }
 
   componentDidMount() {
     this.getAllPosts();
   }
+
+ // componentWillMount(){
+   // this.getAllSearch();
+  //}
+
 
 
   handleChange(value, fieldName){
@@ -44,11 +51,27 @@ class blog extends Component {
       console.log(posts);
       // console.log(this.setState)
       this.setState({
-        postList: posts
+        postList: posts,
       })
     })
   }
 
+/****
+    getAllSearch() {
+    fetch('/api/search',{
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'include',
+    })
+    .then(res => res.json())
+    .then(tags => {
+      this.setState({
+        tagList: tags,
+      })
+    })
+  }
+****/
   handleClick(event){
     event.preventDefault();
     const{title, zipcode, tag, description} = this.state
@@ -83,19 +106,6 @@ class blog extends Component {
       console.log(body);
     })
     .catch(err => console.log(err))
-
-
-
-
-
-    // .then(body => console.log(body))
-    // .then(response => this.processPosts)) //NOT SURE!!!
-    // .catch(()=> console.log("error"))
-
-
-
-
-
 
 
   }
@@ -159,15 +169,19 @@ class blog extends Component {
             {/* Middle Column */}
             <div className="w3-col m7">
               <div className="w3-row-padding">
+              <div className="seach-tab">
+                <form>
+                    <input type="text" name="tag" placeholder="Search for a tag" maxlength="5"/>
+                    
+                </form>
+              </div>
+
                 <div className="w3-col m12">
                   <div className="w3-card w3-round w3-white">
                     <div className="w3-container w3-padding">
                       <div className = "Tags">
-                      <h6 className="w3-opacity">Just Desserts Posts</h6>
-
                   {/*Post FieldName*/}
                    <form onSubmit={this.handleClick}>
-                   <br styles="clear:both" />
                    <div className = "inputBox">
                       <input type="text" name="title" placeholder="Title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
                    </div>
@@ -176,7 +190,7 @@ class blog extends Component {
                      </div>
                    <div className = "inputBox">   
                        <input type="text" name="zipcode" placeholder="Zipcode" maxlength="5" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
-                       <input type="text" name="tag" placeholder="Tag" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
+                       <input type="text" name="tag" placeholder="Tag ex: vegan, non-dairy, gluten-free, sugar-free" maxlength="12" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
 
 
                     </div>
@@ -227,8 +241,6 @@ class blog extends Component {
     }
 
   }
-
-
 
 
 
