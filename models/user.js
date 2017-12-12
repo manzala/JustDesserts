@@ -38,10 +38,11 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   User.associate = (models) => {
+    models.User.hasMany(models.Comment);
     models.User.hasMany(models.Post);
   }
 
-  User.beforeCreate((user) =>
+  User.beforeCreate('comment',(user) =>
     new sequelize.Promise((resolve) => {
       bcrypt.hash(user.password, null, null, (err, hashedPassword) => {
         resolve(hashedPassword);

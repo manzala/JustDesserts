@@ -7,6 +7,8 @@ const Post = (props) => {
       <p>Description: {props.data.description}</p>
       <p>Zip: {props.data.zip}</p>
       <p>Tag: {props.data.tag}</p>
+      <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> Like</button>
+      <button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> Comment</button>
     </div>
   );
 }
@@ -19,6 +21,7 @@ const PostList = (props) => {
     <div className="list-group">
      
       { props.posts.map(p => <Post data={p} /> ) }
+
     </div>
   );
 }
