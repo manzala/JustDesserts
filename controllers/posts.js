@@ -4,11 +4,11 @@ const models = require('../models');
 const router = express.Router();
 
 
-this route is: '/api/posts/'
-router.get('/', (req, res) => {
+//this route is: '/api/posts/'
+router.get('/profile', (req, res) => {
 	models.Post.findAll({
 		where: {
-			userId: userId,
+			userId: req.user.id,
 		},
 		include: [{
 			model: models.User
@@ -17,6 +17,25 @@ router.get('/', (req, res) => {
 		res.json(allPosts);
 	});
 });
+router.post('/profile', (req, res) => {
+	// this is for creating general posts
+	// models.Post.create({
+
+	// this is to create a post for the logged in user
+	req.user.createPost({
+		zip : req.body.zipcode,
+		title: req.body.title,
+		tag: req.body.tag,
+		description: req.body.description,
+
+	}).then((post) => {
+		console.log("in then(post) function")
+		res.status(200).json({message: "success"})
+	}).catch((errors) => {
+		res.status(400).json({message: "ERRORS!!"})
+	});
+});
+
 
 router.get('/', (req, res) => {
 	models.Post.findAll({
