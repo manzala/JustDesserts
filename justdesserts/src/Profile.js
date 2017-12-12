@@ -126,6 +126,7 @@ class Profile extends Component {
               {/* Accordion */}
               <div className="w3-card w3-round">
                 <div className="w3-white">
+                <button className="w3-button w3-block w3-theme-l1 w3-left-align"><a href="./Blog"><i className="fa fa-users fa-fw w3-margin-right" /> Blog Posts </a></button>
                   <div id="Demo3" className="w3-hide w3-container">
                     <div className="w3-row-padding">
                       <br />

@@ -18,7 +18,7 @@ const Routes = () => (
         <Route exact path="/login" component={App} />
         <Route exact path="/Signup" component={Signup}/> 
         <Route exact path="/Profile" component={Profile}/> 
-        <Route exact path="/blog" component={blog}/>
+        <Route exact path="/Blog" component={blog}/>
     	</div>
   	</Route>
   </Router>
