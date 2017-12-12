@@ -32,7 +32,7 @@ class Profile extends Component {
 
   getAllPosts() {
     console.log('getting the posts....');
-    fetch('/api/posts',{
+    fetch('/api/posts/profile',{
       headers: {
         "Content-Type": "application/json"
       },
