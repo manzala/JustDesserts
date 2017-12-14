@@ -170,18 +170,14 @@ class Profile extends Component {
                     {/**<<img src="" style={{width: '100%'}} alt="" className="w3-margin-bottom" />***/}
                   </div>
                 </div>
-                <button type="button" className="w3-button w3-theme-d1 w3-margin-bottom"><i className="fa fa-thumbs-up" /> Like</button>
-                <button type="button" className="w3-button w3-theme-d2 w3-margin-bottom"><i className="fa fa-comment" /> Comment</button>
               </div>
-
+ 
               {/* End Middle Column */}
             </div>
 
             {/* End Grid */}
           </div>
-          <footer>
-           <p> <a href="#"> About Us </a>.</p>
-          </footer>
+          
 
 
 

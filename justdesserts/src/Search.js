@@ -1,69 +1,101 @@
 import React, { Component } from 'react';
-
-
-const Search = (props) => {
-  return (
-    <div>
-       {props.data.tag}
-       {props.data.title}
- 	   {props.data.description}
-       {props.data.zip}
-
-    </div>
-  );
-}
-
-
-const SearchList = (props) => {
-  return (
-    <div className="search-list">
-     
-      { props.tags.map(tag => <Search data={tag} /> ) }
-    </div>
-  );
-}
-
-
-{/*****
+import { Link, Redirect } from 'react-router-dom';
+import SearchList from './SearchList';
 
 class Search extends Component {
-	constructor(){
-		super();
-		this.state={
-			search = ''
-		};
+constructor() {
+        super();
+        this.state = {
+            tag: '',
+            searchList: [],
+            isFound:false,
+        };
 
-	}
 
-	updateSearch(event){
-		this.setState({search: event.target.value.substr(0,12)})
-	}
-	render(){
-		let filteredSearch = this.props.posts.filter(
-				(post) => {
+    this.handleClick = this.handleClick.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
-					return post.tag.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1; 
-				}
-			);
+    }
 
-		return(
-			<div className="Search">
-				<ul>	
-					{filteredSearch.map((tag => <Post data={tag} /> )))}
+getAllPosts() {
+    console.log('getting the posts....');
+    fetch('/api/posts/search',{
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'include',
+    })
+    .then(res => res.json())
+    .then(posts => {
+      console.log('GOT the posts....');
+      console.log(posts);
+      // console.log(this.setState)
+      this.setState({
+        SearchList: posts
+      })
+    })
+  }
+   
+ handleChange(value, fieldName){
+    this.setState({[fieldName]:value});
+  }
 
-				</ul>
-				<input type='text' 
-					value={this.state.search}
-					onChange={this.updateSearch.bind(this)}/>  
+  handleClick(event) {
+    event.preventDefault();
+    const{tag} = this.state
 
-			</div>
-			);
-	}
+    console.log("in blog.js handleClick");
 
+    fetch('/api/posts',{
+      method: "GET",
+      body: JSON.stringify({
+        tag,
+      }),
+      headers: {
+        "Content-Type":"application/json"
+      },
+      credentials: 'include',
+    })
+    .then((response) => {
+      if(response.status >= 400) {
+        console.log('ERROR NOT SEARCHED');
+        return;
+      }
+
+      console.log('making next fetch')
+      this.getAllPosts();
+      this.setState({ isFound: true })
+      return response.json();
+    })
+    .then(body => {
+      console.log('the body: ')
+      console.log(body);
+    })
+    .catch(err => console.log(err))
+
+
+  }
+    render() {
+    	if(this.state.isFound) {
+      		return <Redirect to="/Search" />;
+   			 }
+        return (
+            <div>
+               <form onSubmit={this.handleClick}>
+             	<div className = "inputBox">
+        			<input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
+          			<button type="submit" className="btn btn-secondary">Submit</button>
+          			<SearchList/>
+  				</div>
+  				<br/>
+     		 </form>
+             
+            </div>
+        )
+    }
 }
 
-
-****/}
-
-
 export default Search;
+
+
+

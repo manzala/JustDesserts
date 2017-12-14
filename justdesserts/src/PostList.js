@@ -21,7 +21,6 @@ const PostList = (props) => {
     <div className="list-group">
      
       { props.posts.map(p => <Post data={p} /> ) }
-
     </div>
   );
 }

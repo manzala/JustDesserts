@@ -9,6 +9,7 @@ import App from './App';
 import Signup from './Signup';
 import Profile from './Profile';
 import blog from './blog';
+import Search from './Search';
 
 const Routes = () => (
   <Router>
@@ -19,6 +20,7 @@ const Routes = () => (
         <Route exact path="/Signup" component={Signup}/> 
         <Route exact path="/Profile" component={Profile}/> 
         <Route exact path="/Blog" component={blog}/>
+        <Route exact path="/Search" component={Search}/>
     	</div>
   	</Route>
   </Router>

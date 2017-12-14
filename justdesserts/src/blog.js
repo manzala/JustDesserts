@@ -3,6 +3,7 @@ import { Link, Redirect } from 'react-router-dom';
 import PostList from './PostList';
 import Search from './Search';
 
+
 import './blog.css';
 
 class blog extends Component {
@@ -111,6 +112,7 @@ class blog extends Component {
   }
 
   render(){
+
     return (
       <div>
         <meta charSet="UTF-8" />
@@ -169,12 +171,9 @@ class blog extends Component {
             {/* Middle Column */}
             <div className="w3-col m7">
               <div className="w3-row-padding">
-              <div className="seach-tab">
-                <form>
-                    <input type="text" name="tag" placeholder="Search for a tag" maxlength="5"/>
                     
-                </form>
-              </div>
+                    <Search/>
+                
 
                 <div className="w3-col m12">
                   <div className="w3-card w3-round w3-white">
@@ -185,9 +184,11 @@ class blog extends Component {
                    <div className = "inputBox">
                       <input type="text" name="title" placeholder="Title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
                    </div>
+                    <br/>
                    <div className = "inputBox">   
                        <textarea type="text" name="description" placeholder="Description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
                      </div>
+                     <br/>
                    <div className = "inputBox">   
                        <input type="text" name="zipcode" placeholder="Zipcode" maxlength="5" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
                        <input type="text" name="tag" placeholder="Tag ex: vegan, non-dairy, gluten-free, sugar-free" maxlength="12" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
@@ -227,10 +228,7 @@ class blog extends Component {
 
             {/* End Grid */}
           </div>
-          <footer>
-           <p> <a href="#"> About Us </a>.</p>
-          </footer>
-
+        
 
 
           {/* End Page Container */}

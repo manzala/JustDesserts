@@ -60,7 +60,7 @@ router.get('/zip/:zipcode', (req, res) => {
 });
 
 
-router.get('/tag/:tag', (req,res) => {
+router.get('/search/:search', (req,res) => {
 	models.Post.findAll({
 		where:{
 			tag: req.params.tag
