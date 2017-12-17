@@ -9,9 +9,8 @@ class Homepage extends Component{
   render(){ 
     return (
       <div className="Homepage">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <link rel="stylesheet" href="Homepage.css" />
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossOrigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />   
+            <link rel="stylesheet" href="/bootstrap/bootstrap.min.css" />
             <title>Just Desserts</title> 
                <nav className="navbar navbar-light bg-light fixed-top" role="navigation">
           <h1>
@@ -49,21 +48,21 @@ class Homepage extends Component{
           <h3> Finding desserts that fit your dietary needs has never been easier </h3>
           <div className="row">
             <div className="col-md-2" align="center">
-              <img src="https://maxcdn.icons8.com/Share/icon/Programming//search_property1600.png" style={{width: 100, height: 100}} />
+              <img src="images/homepage/searchicon.png" style={{width: 100, height: 100}} alt="search icon" />
               <p> Search for a dessert based on your preferences </p>
             </div>
             <div className="col-md-3" align="center" style={{paddingTop: 50}}>
-              <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-right-128.png" style={{width: 50, height: 50}} />
+              <img src="/images/homepage/rightarrowicon.png" style={{width: 50, height: 50}} alt="right arrow icon" />
             </div>
             <div className="col-md-2" align="center">
-              <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/20200-200.png" style={{width: 100, height: 100}} />
+              <img src="/images/homepage/cakeicon.png" style={{width: 100, height: 100}} alt="cake icon" />
               <p>Select your favorite dessert</p>
             </div>
             <div className="col-md-2" align="center" style={{paddingTop: 50}}>
-              <img src="https://cdn4.iconfinder.com/data/icons/ionicons/512/icon-chevron-right-128.png" style={{width: 50, height: 50}} />
+              <img src="/images/homepage/rightarrowicon.png" style={{width: 50, height: 50}} alt= "right arrow icon" />
             </div>
             <div className="col-md-3" align="center">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Q25443024_noun_35166_ccPierre-LucAuclair_to_walk.svg/819px-Q25443024_noun_35166_ccPierre-LucAuclair_to_walk.svg.png" style={{width: 100, height: 100}} />
+              <img src="/images/homepage/figurewalkingicon.png" style={{width: 100, height: 100}} alt= "figure walking icon" />
               <p> Go out and enjoy your dessert!</p>
             </div>
           </div>

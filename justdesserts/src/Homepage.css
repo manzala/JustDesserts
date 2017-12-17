@@ -61,7 +61,7 @@ header.masthead {
 /* For width 400px and larger: */
 @media only screen and (min-width: 400px) {
     header.masthead { 
-       background-image: url(http://offbeatandinspired.com/wp-content/uploads/2013/08/Mixed-Berry-+-Yogurt-Pops-6-offbeat-+-inspired.jpg);   
+       background-image: url("/images/homepage/berryyogurtbg.jpg");   
     }
 }
 

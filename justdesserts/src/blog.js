@@ -172,7 +172,7 @@ class blog extends Component {
             <div className="w3-col m7">
               <div className="w3-row-padding">
                     
-                    <Search/>
+                    <Search posts={this.state.searchList} />
                 
 
                 <div className="w3-col m12">
@@ -190,8 +190,8 @@ class blog extends Component {
                      </div>
                      <br/>
                    <div className = "inputBox">   
-                       <input type="text" name="zipcode" placeholder="Zipcode" maxlength="5" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
-                       <input type="text" name="tag" placeholder="Tag ex: vegan, non-dairy, gluten-free, sugar-free" maxlength="12" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
+                       <input type="text" name="zipcode" placeholder="Zipcode" maxLength="5" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
+                       <input type="text" name="tag" placeholder="Tag ex: vegan, non-dairy, gluten-free, sugar-free" maxLength="12" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
 
 
                     </div>

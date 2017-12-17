@@ -20,7 +20,7 @@ module.exports = {
 		passport.authentication('local' , {
 			successRedirect: '/profile',
 			failureRedirect: '/login',
-			failureFlah: true,
+			failureFlash: true,
 			successFlash: true,
 		}) (req, res);
 
