@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const Post = (props) => {
   return (
-    <div>
+    <div id="post">
       <h2>Title: {props.data.title}</h2>
       <p>Description: {props.data.description}</p>
       <p>Zip: {props.data.zip}</p>
