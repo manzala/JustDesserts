@@ -20,7 +20,7 @@ const SearchList = (props) => {
   return (
     <div className="list-group">
      
-      {/****{ props.posts.map(p => <Search data={p} /> ) }***/}
+      { props.posts.map(p => <Search data={p} /> ) }
     </div>
 
   );
