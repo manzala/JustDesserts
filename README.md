@@ -1,17 +1,9 @@
 ## We Call it _"Closing The Sugar Gap!"_
 
 
-### Team Name and Project Name
-- Team WiSE 
+### Project Name
 - JustDesserts.
 - Our catch phrase is ‘Closing the sugar gap’
-
-
-
-### Team Member Names, emails, github and Schools
-- Syeda Kazmi-Shah •  mnzl258@gmail.com • manzala • John Jay College	
-- Sushma Mahadeo • s1maha126@gmail.com  • shorttriptomars • John Jay College
-- Alicia Mendez Medina • ali.mendezmedina@gmail.com • men-ali • John Jay College 
 
 ### Executive summary
 - A social media platform that endorses ‘closing the sugar gap’. The application’s inspiration is derived by the fact that some people are lactose intolerant, but also still love desserts. There are a lot of desserts that some people are not aware of just because of their dietary limitations. This app is basically a bridge for people who love desserts and want to learn or post about different sweets from either around their location or different locations that people have visited. People can post the location(s) of the shop, write reviews, and upload pictures. A filter can be added in which people with different dietary needs can apply, so that everyone can be a part of the rush!
