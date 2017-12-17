@@ -1,12 +1,13 @@
 const express = require('express');
 const models = require('../models');
+const passport = require('../middlewares/authentication');
 
 module.exports = {
   registerRouter() {
     const router = express.Router();
 
     router.get('/', this.index);
-    router.get('/', this.submit);
+    router.post('/', this.submit);
 
     return router;
   },
@@ -22,10 +23,10 @@ module.exports = {
       password: req.body.password,
     }).then((user) => {
       req.login(user, () =>
-          res.redirect('../justdesserts/src/App.js')
+          res.sendStatus(200)
        );
     }).catch(() => {
-      res.render('sign-up');
+      res.sendStatus(401);
     });
   },
 };
