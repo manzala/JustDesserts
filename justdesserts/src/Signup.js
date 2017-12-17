@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import cupcake from './images/cupcake.png'
 import './App.css';
 
 class Signup extends Component {
@@ -66,7 +65,7 @@ constructor() {
         <div className="Signup">
             <div className = "loginBox">
                 <div className = "glass">
-                    <img src={cupcake} className ="user" />
+                    <img src="/images/glassbox/cupcake.png"className ="user" />
                     <h3>Signup Here!</h3>
                     <form onSubmit={this.handleClick}>
                         <div className = "inputBox">
@@ -78,7 +77,7 @@ constructor() {
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">
-                            <input type="text" name="email" placeholder="email" onChange={(e) => this.handleChange(e.target.value, 'email')} />
+                            <input type="text" name="email" placeholder="email" onChange={(e) => this.handleChange(e.target.value.toLowerCase(), 'email')} />
                             <span><i className="fa fa-user" aria-hidden="true"></i></span>
                         </div>
                         <div className = "inputBox">

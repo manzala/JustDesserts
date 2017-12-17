@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-import cupcake from './images/cupcake.png';
 import './App.css';
 
 
@@ -28,7 +27,7 @@ handleClick(event) {
     event.preventDefault();
     const { email, password } = this.state 
     
-    console.log('in handleClick');
+    console.log('printing state....');
     console.log(this.state);
 
     fetch('/api/login', {
@@ -67,7 +66,7 @@ handleClick(event) {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
         <div className = "loginBox">
           <div className = "glass">
-            <img src= {cupcake} className = "user" />
+            <img src="/images/glassbox/cupcake.png" className = "user" />
               <h3>Sign in Here</h3>
                 <form onSubmit={this.handleClick}>
                       <div className = "inputBox">
@@ -80,11 +79,11 @@ handleClick(event) {
                       </div>
                       <div>
                       </div>
-                   <input type="submit" name="" value="Login" onClick={(e)=> this.handleClick(e)}/>
+                   <input type="submit" name="" value="Login" onClick={(e)=> this.handleClick}/>
                </form>
             <a href= "#">Forgot Password?</a>
                 <br />
-            <Link to='/Signup'>Signup??</Link>    
+            <Link to='/Signup'>Signup</Link>    
           </div>
         </div>
       </div>

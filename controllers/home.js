@@ -1,40 +1,20 @@
 const express = require('express');
 const models = require('../models');
+const flash = require('connect-flash');
+const cookieParser = require('cookie-parser');
 
 const router = express.Router();
 const app = express();
 
+
+app.use(express.static('public'));
+app.use(cookieParser());
+app.use(flash());
+
+
+
 const passport = require('../middlewares/authentication');
 
-
-
-
-// router.get('/', (req, res) => {
-//   res.json({
-//     msg: "Successful GET to '/' route"
-//   });
-// });
-
-// router.post('/', (req, res) => {
-//   res.json({
-//     msg: "Successful POST to '/' route"
-//   });
-// });
-
-// router.put('/:id', (req, res) => {
-//   res.json({
-//     msg: "Successful PUT to '/' route",
-//     id: req.params.id
-//   });
-// });
-
-// router.delete('/:id', (req, res) => {
-//   res.json({
-//     msg: "Successful DELETE to '/' route",
-//     id: req.params.id
-//   });
-// });
-///////////
 
 ///////WORKS CREATES DATABASE TABLE /////
 
@@ -72,18 +52,11 @@ router.get('/login', (req, res) => {
 })
 
 router.post('/login', passport.authenticate('local'), (req,res) =>{
+  req.flash('login', 'Welcome');
   res.json({ message: 'Logged IN'});
   console.log('At Router');
 })
 
 
-// router.get('profile', (res,req)=>{
-//   passport.redirectIfNotLoggedIn('../justdesserts/src/App.js'),
-//   res.render('profile');
-// })
-
-//var port = process.env.API_PORT || 3000;
-// app.use('/api', router);
-//app.listen(3000, () => console.log('Server listening on port 3001!') );
 
 module.exports = router;

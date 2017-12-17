@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PostList from './PostList';
 
+
 //import './Profile.css';
 
 class Profile extends Component {
