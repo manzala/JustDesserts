@@ -172,7 +172,7 @@ class blog extends Component {
             <div className="w3-col m7">
               <div className="w3-row-padding">
                     
-                    <Search posts={this.state.searchList} />
+                    <Search  />
                 
 
                 <div className="w3-col m12">

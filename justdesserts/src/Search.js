@@ -31,7 +31,7 @@ getAllPosts() {
       console.log(posts);
       // console.log(this.setState)
       this.setState({
-        SearchList: posts
+        searchList: posts,
       })
     })
   }
@@ -47,7 +47,7 @@ getAllPosts() {
     console.log("in blog.js handleClick");
 
     fetch('/api/posts',{
-      method: "GET",
+      method: "POST",
       body: JSON.stringify({
         tag,
       }),
@@ -76,19 +76,22 @@ getAllPosts() {
 
   }
     render() {
-    	if(this.state.isFound) {
-      		return <Redirect to="/Search" />;
-   			 }
+   
+   if(this.state.isFound) {
+           return <Redirect to="/Search" />;
+         }
+
         return (
             <div>
                <form onSubmit={this.handleClick}>
-                 	 <div className = "inputBox">
-            			 <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
-              		 <button type="submit" className="btn btn-secondary">Submit</button>
-              		 <SearchList posts={this.state.searchList} />
-      				     </div>
-      				     <br/>
+               	 <div className = "inputBox">
+          			 <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
+            		 <button type="submit" className="btn btn-secondary">Submit</button>
+            		 <SearchList posts={this.state.searchList} />
+    				     </div>
+    				     <br/>
      		       </form>
+             
             </div>
         )
     }
