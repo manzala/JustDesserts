@@ -82,15 +82,16 @@ getAllPosts() {
          }
 
         return (
+
             <div>
-               <form onSubmit={this.handleClick}>
+              <form onSubmit={this.handleClick}>
                	 <div className = "inputBox-search">
-          			 <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
-            		 <button type="submit" className="btn btn-secondary">Submit</button>
-            		 <SearchList posts={this.state.searchList} />
+            			 <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
+              		 <input type="submit" className="w3-button w3-theme " name="" value="Search" onClick={(e)=> this.handleClick(e)}/>
+              		 <SearchList posts={this.state.searchList} />
     				     </div>
     				     <br/>
-     		       </form>
+     		     </form>
              
             </div>
         )
