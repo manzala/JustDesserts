@@ -6,9 +6,9 @@ body
   background-image: url("/images/homepage/berryyogurtbg.jpg");
   background-repeat:no-repeat;
   background-size:cover;
-
-
 }
+
+
 .inputBox
 {
 
@@ -33,6 +33,14 @@ body
     }
 }
 
+
+.inputBox-last
+{
+
+  position: relative;
+   width:700px;
+
+}
 
 .dropbtn {
     background-color: #4CAF50;

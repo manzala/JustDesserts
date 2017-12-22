@@ -37,38 +37,19 @@ router.post('/profile', (req, res) => {
 });
 
 
-router.get('/', (req, res) => {
-	models.Post.findAll({
-		include: [{
-			model: models.User
-		}]
-	}).then((allPosts) => {
-		res.json(allPosts);
-	});
-});
-
-
-// this route is: '/api/posts/zip/:zipcode'
-router.get('/zip/:zipcode', (req, res) => {
-	models.Post.findAll({
-		where: {
-			zip: req.params.zipcode
-		}
-	}).then((allPosts) => {
-		res.json(allPosts);
-	});
-});
-
-
 router.get('/search/:search', (req,res) => {
 	models.Post.findAll({
 		where:{
-			tag: req.params.tag
+			tag: req.params.search
 		}
 	}).then((allPosts) => {
 		res.json(allPosts);
 	})
 } )
+
+
+
+
 
 
 router.post('/search', (req, res) => {
@@ -82,6 +63,27 @@ router.post('/search', (req, res) => {
 	});
 });
 
+// this route is: '/api/posts/zip/:zipcode'
+router.get('/zip/:zipcode', (req, res) => {
+	models.Post.findAll({
+		where: {
+			zip: req.params.zipcode
+		}
+	}).then((allPosts) => {
+		res.json(allPosts);
+	});
+});
+
+
+router.get('/', (req, res) => {
+	models.Post.findAll({
+		include: [{
+			model: models.User
+		}]
+	}).then((allPosts) => {
+		res.json(allPosts);
+	});
+});
 
 router.post('/', (req, res) => {
 	// this is for creating general posts
