@@ -208,9 +208,8 @@ class blog extends Component {
                   </div>
                 </div>
               </div>
-              <div className="w3-container w3-card w3-white w3-round w3-margin"><br />
-                <hr className="w3-clear" />
-
+              <div className="posts-results"><br />
+                
                 <PostList posts={this.state.postList} />
                 <div className="w3-row-padding" style={{margin: '0 -26px'}}>
                   <div className="w3-half">

@@ -84,7 +84,7 @@ getAllPosts() {
         return (
             <div>
                <form onSubmit={this.handleClick}>
-               	 <div className = "inputBox">
+               	 <div className = "inputBox-search">
           			 <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
             		 <button type="submit" className="btn btn-secondary">Submit</button>
             		 <SearchList posts={this.state.searchList} />
