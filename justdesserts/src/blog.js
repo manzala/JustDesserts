@@ -22,7 +22,6 @@ class blog extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getAllPosts = this.getAllPosts.bind(this);
-    this.getAllSearchPosts = this.getAllSearchPosts.bind(this);
     this.handleSearchClick = this.handleSearchClick.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
   }
@@ -31,7 +30,6 @@ class blog extends Component {
     this.getAllPosts();
   }
 
-
   handleChange(value,fieldName){
     this.setState({[fieldName]:value});
   }
@@ -39,24 +37,6 @@ class blog extends Component {
     this.setState({tag: value})
   }
 
-getAllSearchPosts() {
-    console.log('getting the posts....');
-    fetch('/api/posts/search',{
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: 'include',
-    })
-    .then(res => res.json())
-    .then(searchPosts => {
-      console.log('GOT the posts....');
-      console.log(searchPosts);
-      // console.log(this.setState)
-      this.setState({
-        searchList: searchPosts,
-      })
-    })
-  }
 
   getAllPosts() {
     console.log('getting the posts....');
@@ -77,22 +57,6 @@ getAllSearchPosts() {
     })
   }
 
-/****
-    getAllSearch() {
-    fetch('/api/search',{
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: 'include',
-    })
-    .then(res => res.json())
-    .then(tags => {
-      this.setState({
-        tagList: tags,
-      })
-    })
-  }
-****/
   handleClick(event){
     event.preventDefault();
     const{title, zipcode, tag, description} = this.state
@@ -135,7 +99,7 @@ getAllSearchPosts() {
     event.preventDefault();
     const{tag} = this.state
 
-    console.log("in blog.js  handleSearchClick");
+    console.log("Within the handleSearchClick function");
 
     fetch('/api/posts/search',{
       method: "POST",
@@ -149,17 +113,18 @@ getAllSearchPosts() {
     })
     .then((response) => {
       if(response.status >= 400) {
-        console.log('ERROR NOT Searched :(');
+        console.log('Got a status code of ' + response.status + " failed to handle search");
         return;
-      }
-
-      console.log('making next fetch')
-      this.getAllSearchPosts();
+      } else {
+      console.log('Received a status code lower than 400, Status: ' + response.status);
       return response.json();
-    })
-    .then(body => {
-      console.log('the body: ')
-      console.log(body);
+    }})
+    .then(filteredPosts => {
+      console.log('Filtered Posts: ');
+      console.log(filteredPosts);
+      this.setState({
+        postList: filteredPosts,
+      })
     })
     .catch(err => console.log(err))
 
