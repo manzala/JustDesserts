@@ -16,12 +16,20 @@ body
 
 }
 
+.inputBox-search{
+    transition: width 0.4s ease-in-out;
+    width: 100%;
+    padding-left: 10px;
+
+
+}
+
 .inputBox span
 {
 
   position: absolute;
   top: 10px;
-  color: #262626;
+ 
 
 }
 

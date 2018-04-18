@@ -197,8 +197,9 @@ class blog extends Component {
                
                <form>
                   <div className = "inputBox-search">
-                  <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleSearchChange(e.target.value)} />
-                  <input type="submit" className="w3-button w3-theme " name="" value="Search" onClick={(e)=> this.handleSearchClick(e)}/>
+                  <input type="text" name="search" placeholder="Search.." onChange={(e) => this.handleSearchChange(e.target.value)} />
+                  {/*<input type="submit" name="" value="Search" onClick={(e)=> this.handleSearchClick(e)}/>*/}
+                  <button onClick={(e)=> this.handleSearchClick(e)}>Search</button>
                   <SearchList posts={this.state.searchList} />
                 </div>
                 <br/>
