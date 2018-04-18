@@ -1,0 +1,27 @@
+
+
+def paradigm(var):
+	if(var <0):
+		abs(var)
+	stringvar = str(var)
+	
+	end = len(stringvar)-1
+	for start in range(0,len(stringvar)-1):
+
+		If( stringvar[start]==stringvar[end]):
+			end --
+			continue
+
+		else:
+			return false
+
+	return true
+
+
+print(paradigm(11211))
+print(paradigm(-111)
+
+
+
+
+

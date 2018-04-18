@@ -18,7 +18,7 @@ const Post = (props) => {
 
 
 const PostList = (props) => {
-  console.log('in functional proplist')
+  console.log('in functional proplist for PostList')
   console.log(props);
   return (
     <div className="list-group">

@@ -38,28 +38,26 @@ router.post('/profile', (req, res) => {
 
 
 router.get('/search/:search', (req,res) => {
-	models.Post.findAll({
+	return models.Post.findAll({
 		where:{
-			tag: req.params.search
+			tag: req.params.body.tag
 		}
 	}).then((allPosts) => {
 		res.json(allPosts);
 	})
 } )
 
-
-
-
-
-
 router.post('/search', (req, res) => {
-	req.user.createPost({
-		tag:req.body.tag,
+	models.Post.findAll({
+		where:{
+			tag: req.body.tag
+		}
 	}).then((post) => {
-		console.log("in function")
-		res.status(200).json({message: 'sucess'})
+		console.log("In Then of search post");
+		console.log(post);
+		res.status(200).json(post);
 	}).catch((errors)=> {
-		res.status(400).json({message:"error"})
+		res.status(400).json({message:"Could not complete search"})
 	});
 });
 

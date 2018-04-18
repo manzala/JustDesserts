@@ -15,8 +15,9 @@ const Search = (props) => {
 }
 
 const SearchList = (props) => {
-  console.log('in functional proplist')
+  console.log('in functional proplist for SearchList')
   console.log(props);
+  <p>Tag: {props.tag}</p>
   return (
     <div className="list-group">
      
