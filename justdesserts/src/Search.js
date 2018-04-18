@@ -40,41 +40,41 @@ getAllPosts() {
     this.setState({[fieldName]:value});
   }
 
-  handleClick(event) {
-    event.preventDefault();
-    const{tag} = this.state
+  // handleClick(event) {
+  //   event.preventDefault();
+  //   const{tag} = this.state
 
-    console.log("in blog.js handleClick");
+  //   console.log("in blog.js handleClick");
 
-    fetch('/api/posts',{
-      method: "POST",
-      body: JSON.stringify({
-        tag,
-      }),
-      headers: {
-        "Content-Type":"application/json"
-      },
-      credentials: 'include',
-    })
-    .then((response) => {
-      if(response.status >= 400) {
-        console.log('ERROR NOT SEARCHED');
-        return;
-      }
+  //   fetch('/api/posts/',{
+  //     method: "POST",
+  //     body: JSON.stringify({
+  //       tag,
+  //     }),
+  //     headers: {
+  //       "Content-Type":"application/json"
+  //     },
+  //     credentials: 'include',
+  //   })
+  //   .then((response) => {
+  //     if(response.status >= 400) {
+  //       console.log('ERROR NOT SEARCHED');
+  //       return;
+  //     }
 
-      console.log('making next fetch')
-      this.getAllPosts();
-      this.setState({ isFound: true })
-      return response.json();
-    })
-    .then(body => {
-      console.log('the body: ')
-      console.log(body);
-    })
-    .catch(err => console.log(err))
+  //     console.log('making next fetch')
+  //     this.getAllPosts();
+  //     this.setState({ isFound: true })
+  //     return response.json();
+  //   })
+  //   .then(body => {
+  //     console.log('the body: ')
+  //     console.log(body);
+  //   })
+  //   .catch(err => console.log(err))
 
 
-  }
+  // }
     render() {
    
    if(this.state.isFound) {
@@ -84,7 +84,7 @@ getAllPosts() {
         return (
 
             <div>
-              <form onSubmit={this.handleClick}>
+              <form>
                	 <div className = "inputBox-search">
             			 <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleChange(e.target.value, 'tag')} />
               		 <input type="submit" className="w3-button w3-theme " name="" value="Search" onClick={(e)=> this.handleClick(e)}/>

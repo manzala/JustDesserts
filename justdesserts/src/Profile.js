@@ -16,7 +16,7 @@ class Profile extends Component {
       postList: []
     };
 
-    this.handleClick = this.handleClick.bind(this);
+   
     this.handleChange = this.handleChange.bind(this);
     this.getAllPosts = this.getAllPosts.bind(this);
   }
@@ -50,42 +50,7 @@ class Profile extends Component {
     })
   }
 
-  handleClick(event){
-    event.preventDefault();
-    const{title, zipcode, tag, description} = this.state
-
-    console.log("in blog.js handleClick");
-
-    fetch('/api/posts',{
-      method: "POST",
-      body: JSON.stringify({
-        title,
-        zipcode,
-        tag,
-        description,
-      }),
-      headers: {
-        "Content-Type":"application/json"
-      },
-      credentials: 'include',
-    })
-    .then((response) => {
-      if(response.status >= 400) {
-        console.log('ERROR NOT POSTED');
-        return;
-      }
-
-      console.log('making next fetch')
-      this.getAllPosts();
-      return response.json();
-    })
-    .then(body => {
-      console.log('the body: ')
-      console.log(body);
-    })
-    .catch(err => console.log(err))
-
-  }
+  
 
   render(){
     return (

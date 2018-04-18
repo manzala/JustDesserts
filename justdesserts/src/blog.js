@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import PostList from './PostList';
-import Search from './Search';
-
+import SearchList from './SearchList';
 
 import './blog.css';
 
@@ -15,28 +14,49 @@ class blog extends Component {
       tag:'',
       description:'',
       postList: [],
+      searchList: [],
+      isFound:false,
+
     };
 
     this.handleClick = this.handleClick.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.getAllPosts = this.getAllPosts.bind(this);
-   // this.getAllSearch = this.getAllSearch.bind(this);
+    this.getAllSearchPosts = this.getAllSearchPosts.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this);
   }
 
   componentDidMount() {
     this.getAllPosts();
   }
 
- // componentWillMount(){
-   // this.getAllSearch();
-  //}
 
-
-
-  handleChange(value, fieldName){
+  handleChange(value,fieldName){
     this.setState({[fieldName]:value});
   }
+  handleSearchChange(value){
+    this.setState({tag: value})
+  }
 
+getAllSearchPosts() {
+    console.log('getting the posts....');
+    fetch('/api/posts/search',{
+      headers: {
+        "Content-Type": "application/json"
+      },
+      credentials: 'include',
+    })
+    .then(res => res.json())
+    .then(searchPosts => {
+      console.log('GOT the posts....');
+      console.log(searchPosts);
+      // console.log(this.setState)
+      this.setState({
+        searchList: searchPosts,
+      })
+    })
+  }
 
   getAllPosts() {
     console.log('getting the posts....');
@@ -111,6 +131,41 @@ class blog extends Component {
 
   }
 
+  handleSearchClick(event){
+    event.preventDefault();
+    const{tag} = this.state
+
+    console.log("in blog.js  handleSearchClick");
+
+    fetch('/api/posts/search',{
+      method: "POST",
+      body: JSON.stringify({
+        tag,
+      }),
+      headers: {
+        "Content-Type":"application/json"
+      },
+      credentials: 'include',
+    })
+    .then((response) => {
+      if(response.status >= 400) {
+        console.log('ERROR NOT Searched :(');
+        return;
+      }
+
+      console.log('making next fetch')
+      this.getAllSearchPosts();
+      return response.json();
+    })
+    .then(body => {
+      console.log('the body: ')
+      console.log(body);
+    })
+    .catch(err => console.log(err))
+
+
+  }
+
   render(){
 
     return (
@@ -172,7 +227,20 @@ class blog extends Component {
             <div className="w3-col m7">
               <div className="w3-row-padding">
                     
-                    <Search  />
+                    
+                <div>
+               
+               <form>
+                  <div className = "inputBox-search">
+                  <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleSearchChange(e.target.value)} />
+                  <input type="submit" className="w3-button w3-theme " name="" value="Search" onClick={(e)=> this.handleSearchClick(e)}/>
+                  <SearchList posts={this.state.searchList} />
+                </div>
+                <br/>
+              </form>
+             
+            </div>
+
                 
 
                 <div className="w3-col m12">

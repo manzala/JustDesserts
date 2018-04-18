@@ -38,7 +38,7 @@ router.post('/profile', (req, res) => {
 
 
 router.get('/search/:search', (req,res) => {
-	models.Post.findAll({
+	return models.Post.findAll({
 		where:{
 			tag: req.params.search
 		}
@@ -53,7 +53,7 @@ router.get('/search/:search', (req,res) => {
 
 
 router.post('/search', (req, res) => {
-	req.user.createPost({
+	return req.user.createPost({
 		tag:req.body.tag,
 	}).then((post) => {
 		console.log("in function")
