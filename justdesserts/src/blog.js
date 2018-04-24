@@ -209,7 +209,7 @@
   {/*-POST SECTION !*/}
   <div className="content">
     <div className="form-row ">  
-      <div className="form-group col-lg-6 col-md-offset-3">
+      <div className="form-group">
         {/*-PUT POSTS LIST OVER HERE !*/}
          <PostList posts={this.state.postList} />
       </div>
