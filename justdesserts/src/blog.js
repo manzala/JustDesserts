@@ -142,11 +142,11 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
 
   {/*-NAVBAR !*/}
-  <nav className="navbar fixed-top navbar navbar-inverse">
+  <nav className="navbar navbar-inverse navbar-fixed-top">
     <div className="container-fluid">
       <div className="navbar-header">
         <a className="navbar-brand" href="/">
-          <img src="/images/blog/cupcake.png" width={30} height={30} className="d-inline-block align-top" alt />
+          <img src="/images/blog/sweet.png" width={30} height={30} className="d-inline-block align-top" alt />
         </a>
       </div>
       <ul className="nav navbar-nav">
@@ -170,7 +170,7 @@
 
     {/*-LEFT SIDE CONTENT */}
     <div className="form-row">
-      <div className="col-sm-4 col-md-3">
+      <div className="col-sm-6 col-md-3">
         <div className="sidebar">
           <h1> JustDesserts</h1>
           <h2>Profile</h2>

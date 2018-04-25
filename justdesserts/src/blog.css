@@ -22,6 +22,7 @@ body,html
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,.5);
     background: rgba(252,252,252,.75);
+    margin-top: 80px;
 
 }
 
@@ -50,16 +51,17 @@ h2{
 }
 
 .sidebar{
-   width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 19%;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     border: 2px solid #f7eaea;
    
     background-color: #ededed;
     box-shadow: 0 10px 20px rgba(0,0,0,.5);
-    
+    margin-top: 80px;
+    position: fixed;
 
 
 
