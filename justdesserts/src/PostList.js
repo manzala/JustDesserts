@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './PostList.css'
+import './blog.css';
+
 
 const Post = (props) => {
   return (

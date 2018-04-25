@@ -1,28 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Mystery+Quest');
 
 
-body
+body,html
 {
-  height: 95%;
-  background-image: url("/images/blog/orange_red.jpg");
-}
+  
+    background-image: url("/images/blog/sidecupcake.jpg");
+    background-repeat: repeat-y;
+    height: 100%;
 
-.bg{
-  background-image: url("/images/blog/orange_red.jpg");
-  height: 95%;
-  background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
 }
 
 
-.navbar-default{
-  color: red;
-
-}
-.row{
-   position: center;
-}
 
 .inputBox-search{
     width: 100%;
@@ -33,7 +21,7 @@ body
     border: 2px solid white;
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,.5);
-    background: rgba(255,249,249,.75);
+    background: rgba(252,252,252,.75);
 
 }
 
@@ -76,4 +64,13 @@ h2{
 
 
 }
+
+
+
+.navbar{
+  background: transparent;
+  overflow: hidden;
+   position: fixed;
+}
+
 

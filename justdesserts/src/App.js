@@ -58,7 +58,7 @@ handleClick(event) {
 
   render() {
     if(this.state.isLoggedIn) {
-      return <Redirect to="/blog" />;
+      return <Redirect to="/Blog" />;
     }
 
     return (

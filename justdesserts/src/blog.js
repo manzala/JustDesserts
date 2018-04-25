@@ -136,7 +136,7 @@
     return (
 
       
-      <div>
+      <div className="back">
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
@@ -160,7 +160,7 @@
             <button className="btn btn-default" type="submit" onClick={(e)=> this.handleSearchClick(e)}>
               <i className="glyphicon glyphicon-search" />
             </button>
-             <SearchList posts={this.state.searchList} />
+             <SearchList posts={this.state.searchList}/>
           </div>
         </div>
       </form>
@@ -181,11 +181,7 @@
     {/*-POST BOX  !*/}
     <form className="form col-md-4 col-md-offset-1" onSubmit={this.handleClick}>
       <div className="inputBox-search">
-        <fieldset disabled>
-          <div className="form-group">
-            <input type="text" id="post" className="form-control" placeholder="Post Below" />
-          </div>
-        </fieldset>
+        
         <div className="form-row"> 
           <div className="form-group">
             <input type="text" name="title" className="form-control" placeholder="Title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
@@ -212,6 +208,7 @@
       <div className="form-group">
         {/*-PUT POSTS LIST OVER HERE !*/}
          <PostList posts={this.state.postList} />
+
       </div>
     </div>
   </div>
