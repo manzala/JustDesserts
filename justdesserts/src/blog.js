@@ -146,7 +146,7 @@
     <div className="container-fluid">
       <div className="navbar-header">
         <a className="navbar-brand" href="/">
-          <img src="/images/blog/sweet.png" width={30} height={30} className="d-inline-block align-top" alt />
+          <img src="/images/blog/dot.png" width={30} height={30} className="d-inline-block align-top" alt />
         </a>
       </div>
       <ul className="nav navbar-nav">
@@ -158,7 +158,7 @@
           <input type="text" className="form-control" placeholder="Search" name="search" onChange={(e) => this.handleSearchChange(e.target.value)}/>
           <div className="input-group-btn">
             <button className="btn btn-default" type="submit" onClick={(e)=> this.handleSearchClick(e)}>
-              <i className="glyphicon glyphicon-search" />
+              <i className="glyphicon glyphicon-search " />
             </button>
              <SearchList posts={this.state.searchList}/>
           </div>
@@ -179,6 +179,8 @@
     </div>
     {/*-<form class="form col-md-4 col-md-offset-4" style="background-color:lavender;">!*/}
     {/*-POST BOX  !*/}
+
+    
     <form className="form col-md-4 col-md-offset-1" onSubmit={this.handleClick}>
       <div className="inputBox-search">
         

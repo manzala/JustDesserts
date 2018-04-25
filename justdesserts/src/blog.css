@@ -4,7 +4,7 @@
 body,html
 {
   
-    background-image: url("/images/blog/sidecupcake.jpg");
+    background-image: url("/images/blog/purpleback.jpeg");
     background-repeat: repeat-y;
     height: 100%;
 
@@ -18,13 +18,14 @@ body,html
     padding-right: 10px;
     padding-top: 10px;
     padding-bottom: 10px;
-    border: 2px solid white;
+    border: 2px solid #6F42C1;
     border-radius: 12px;
     box-shadow: 0 10px 20px rgba(0,0,0,.5);
-    background: rgba(252,252,252,.75);
+    background: rgba(111,66,193,.75);
     margin-top: 80px;
 
 }
+
 
 .content{
     padding-left: 10px;
@@ -56,17 +57,15 @@ h2{
     padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
-    border: 2px solid #f7eaea;
+    border: 2px solid #c2aee8;
    
-    background-color: #ededed;
+    background-color: #c2aee8;
     box-shadow: 0 10px 20px rgba(0,0,0,.5);
     margin-top: 80px;
     position: fixed;
-
-
+  
 
 }
-
 
 
 .navbar{
