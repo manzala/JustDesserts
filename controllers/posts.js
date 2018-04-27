@@ -12,7 +12,8 @@ router.get('/profile', (req, res) => {
 		},
 		include: [{
 			model: models.User
-		}]
+		}],
+		 order:[[ 'createdAt', 'DESC']],
 	}).then((allPosts) => {
 		res.json(allPosts);
 	});
@@ -76,8 +77,9 @@ router.get('/zip/:zipcode', (req, res) => {
 router.get('/', (req, res) => {
 	models.Post.findAll({
 		include: [{
-			model: models.User
-		}]
+			model: models.User}],
+		 order:[[ 'createdAt', 'DESC']],	
+
 	}).then((allPosts) => {
 		res.json(allPosts);
 	});

@@ -142,7 +142,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
 
   {/*-NAVBAR !*/}
-  <nav className="navbar navbar-inverse navbar-fixed-top">
+  <nav className="navbar navbar-light navbar-fixed-top" style={{backgroundColor: '#6F42C1'}}>  
     <div className="container-fluid">
       <div className="navbar-header">
         <a className="navbar-brand" href="/">
@@ -170,17 +170,17 @@
 
     {/*-LEFT SIDE CONTENT */}
     <div className="form-row">
-      <div className="col-sm-6 col-md-3">
+      <div className="col-sm-7 col-md-3">
         <div className="sidebar">
           <h1> JustDesserts</h1>
-          <h2>Profile</h2>
+          <h2>Blog</h2>
         </div> 
       </div>
     </div>
     {/*-<form class="form col-md-4 col-md-offset-4" style="background-color:lavender;">!*/}
     {/*-POST BOX  !*/}
 
-    
+
     <form className="form col-md-4 col-md-offset-1" onSubmit={this.handleClick}>
       <div className="inputBox-search">
         
