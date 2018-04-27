@@ -166,22 +166,22 @@
       </form>
     </div>
   </nav>
-  <div className="container">
+  <div className="container-fluid">
 
     {/*-LEFT SIDE CONTENT */}
     <div className="form-row">
-      <div className="col-sm-7 col-md-3">
+      <div className="f">
         <div className="sidebar">
           <h1> JustDesserts</h1>
           <h2>Blog</h2>
         </div> 
       </div>
     </div>
-    {/*-<form class="form col-md-4 col-md-offset-4" style="background-color:lavender;">!*/}
+   <br/>
     {/*-POST BOX  !*/}
 
 
-    <form className="form col-md-4 col-md-offset-1" onSubmit={this.handleClick}>
+    <form className="form col-md-4 col-md-offset-4" onSubmit={this.handleClick}>
       <div className="inputBox-search">
         
         <div className="form-row"> 

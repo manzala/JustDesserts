@@ -12,3 +12,8 @@
     margin-bottom: 30px;
 
 }
+
+.btn.btn-default {
+    background: #c2aee8;
+    color: white;
+}
