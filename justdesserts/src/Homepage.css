@@ -27,7 +27,7 @@ body
 }
 
 .navbar-brand label{
-  color: red;
+  color: #6f42c1;
   font-size: 2em;
   font-family: 'Mystery Quest', cursive;
   margin-top: 20px;
@@ -44,7 +44,7 @@ body
 
 nav .btn{
   border-color: transparent; 
-  background-color:red;
+  background-color: #6f42c1;
 }
 
 .navbar{
@@ -61,7 +61,7 @@ header.masthead {
 /* For width 400px and larger: */
 @media only screen and (min-width: 400px) {
     header.masthead { 
-       background-image: url("/images/homepage/berryyogurtbg.jpg");   
+       background-image: url("/images/homepage/purple-cupcakes.jpg");   
     }
 }
 
@@ -77,22 +77,19 @@ header.masthead h2 {
 } 
 
 header .btn{
-  background-color: red;
+  background-color:#6f42c1;;
   border-color: transparent;
 }
 
  
 header .overlay {
     position: absolute;
-    background-color: rgba(0,0,0,0.55);
+    background-color: rgba(0,0,0,0.4);
     width:100%;
     height: 100%;
     bottom:0;
 
   }
-
-
-
 
 .container h3{
   padding-top: 2%;
@@ -104,5 +101,9 @@ header .overlay {
 
 .bannerTitle{
   font-family: 'Mystery Quest', cursive;
+}
+
+.purple{
+  background-color: #6f42c1;
 }
 
