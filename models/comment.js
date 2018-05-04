@@ -5,7 +5,7 @@ module.exports =(sequelize, DataTypes) => {
 	const Comment = sequelize.define('comment', {
 		message:{
 			type: DataTypes.STRING,
-      		allowNull: false,
+      		allowNull: true,
       		validate: {
        		notEmpty: false,
      	 },
@@ -13,6 +13,7 @@ module.exports =(sequelize, DataTypes) => {
 	})
 
  	Comment.associate = (models) => {
+    models.Comment.belongsTo(models.Post);
     models.Comment.belongsTo(models.User);
   }
 
