@@ -58,7 +58,7 @@ handleClick(event) {
 
   render() {
     if(this.state.isLoggedIn) {
-      return <Redirect to="/blog" />;
+      return <Redirect to="/Blog" />;
     }
 
     return (
@@ -66,7 +66,7 @@ handleClick(event) {
       <meta name="viewport" content="width=device-width, initial-scale=1" />
         <div className = "loginBox">
           <div className = "glass">
-            <img src="/images/glassbox/cupcake.png" className = "user" />
+            <img src="/images/blog/dot.png" className = "user" />
               <h3>Sign in Here</h3>
                 <form onSubmit={this.handleClick}>
                       <div className = "inputBox">

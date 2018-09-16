@@ -1,277 +1,288 @@
-import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import PostList from './PostList';
-import SearchList from './SearchList';
+ import React, { Component } from 'react';
+ import { Link, Redirect } from 'react-router-dom';
+ import PostList from './PostList';
+ import SearchList from './SearchList';
 
-import './blog.css';
+ import './blog.css';
 
-class blog extends Component {
-  constructor(){
-    super();
-    this.state ={
-      title: '',
-      zipcode:'',
-      tag:'',
-      description:'',
-      postList: [],
-      searchList: [],
-      isFound:false,
+ class blog extends Component {
+   constructor(){
+     super();
+     this.state ={
+       title: '',
+       zipcode:'',
+       tag:'',
+       message:'',
+       description:'',
+       postList: [],
+       searchList: [],
+       isFound:false,
+       commentList: [],
 
-    };
+     };
 
-    this.handleClick = this.handleClick.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.getAllPosts = this.getAllPosts.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-  }
+     this.handleClick = this.handleClick.bind(this);
+     this.handleChange = this.handleChange.bind(this);
+     this.getAllPosts = this.getAllPosts.bind(this);
+     this.handleSearchClick = this.handleSearchClick.bind(this);
+     this.handleSearchChange = this.handleSearchChange.bind(this);
+     this.handleCommentClick = this.handleCommentClick.bind(this);
+     this.getAllComments = this.getAllComments.bind(this);
+   }
 
-  componentDidMount() {
+   componentDidMount() {
     this.getAllPosts();
   }
 
   handleChange(value,fieldName){
-    this.setState({[fieldName]:value});
+     this.setState({[fieldName]:value});
   }
-  handleSearchChange(value){
-    this.setState({tag: value})
-  }
+   handleSearchChange(value){
+     this.setState({tag: value})
+   }
 
 
-  getAllPosts() {
-    console.log('getting the posts....');
-    fetch('/api/posts',{
-      headers: {
+   getAllPosts() {
+     console.log('getting the posts....');
+     fetch('/api/posts',{
+       headers: {
         "Content-Type": "application/json"
-      },
-      credentials: 'include',
-    })
-    .then(res => res.json())
-    .then(posts => {
-      console.log('GOT the posts....');
-      console.log(posts);
-      // console.log(this.setState)
-      this.setState({
-        postList: posts,
-      })
-    })
-  }
+       },
+       credentials: 'include',
+     })
+     .then(res => res.json())
+     .then(posts => {
+       console.log('GOT the posts....');
+       console.log(posts);
+       // console.log(this.setState)
+       this.setState({
+         postList: posts,
+       })
+     })
+   }
 
-  handleClick(event){
-    event.preventDefault();
-    const{title, zipcode, tag, description} = this.state
+   handleClick(event){
+     event.preventDefault();
+     const{title, zipcode, tag, description} = this.state
 
-    console.log("in blog.js handleClick");
+     console.log("in blog.js handleClick");
 
-    fetch('/api/posts',{
-      method: "POST",
-      body: JSON.stringify({
-        title,
-        zipcode,
-        tag,
-        description,
-      }),
-      headers: {
-        "Content-Type":"application/json"
-      },
-      credentials: 'include',
-    })
-    .then((response) => {
-      if(response.status >= 400) {
-        console.log('ERROR NOT POSTED');
-        return;
-      }
+     fetch('/api/posts',{
+       method: "POST",
+       body: JSON.stringify({
+         title,
+         zipcode,
+         tag,
+         description,
+       }),
+       headers: {
+         "Content-Type":"application/json"
+       },
+       credentials: 'include',
+     })
+     .then((response) => {
+       if(response.status >= 400) {
+         console.log('ERROR NOT POSTED');
+         return;
+       }
 
-      console.log('making next fetch')
-      this.getAllPosts();
-      return response.json();
-    })
-    .then(body => {
-      console.log('the body: ')
-      console.log(body);
-    })
-    .catch(err => console.log(err))
+       console.log('making next fetch')
+       this.getAllPosts();
+       return response.json();
+     })
+     .then(body => {
+       console.log('the body: ')
+       console.log(body);
+     })
+     .catch(err => console.log(err))
 
 
-  }
+   }
 
-  handleSearchClick(event){
-    event.preventDefault();
-    const{tag} = this.state
+   handleSearchClick(event){
+     event.preventDefault();
+     const{tag} = this.state
 
-    console.log("Within the handleSearchClick function");
+     console.log("Within the handleSearchClick function");
 
-    fetch('/api/posts/search',{
-      method: "POST",
-      body: JSON.stringify({
-        tag,
-      }),
-      headers: {
-        "Content-Type":"application/json"
-      },
-      credentials: 'include',
-    })
-    .then((response) => {
-      if(response.status >= 400) {
-        console.log('Got a status code of ' + response.status + " failed to handle search");
-        return;
-      } else {
-      console.log('Received a status code lower than 400, Status: ' + response.status);
-      return response.json();
-    }})
+     fetch('/api/posts/search',{
+       method: "POST",
+       body: JSON.stringify({
+         tag,
+       }),
+       headers: {
+         "Content-Type":"application/json"
+       },
+       credentials: 'include',
+     })
+     .then((response) => {
+       if(response.status >= 400) {
+         console.log('Got a status code of ' + response.status + " failed to handle search");
+         return;
+       } else {
+       console.log('Received a status code lower than 400, Status: ' + response.status);
+       return response.json();
+     }})
     .then(filteredPosts => {
-      console.log('Filtered Posts: ');
-      console.log(filteredPosts);
-      this.setState({
-        postList: filteredPosts,
-      })
-    })
-    .catch(err => console.log(err))
+       console.log('Filtered Posts: ');
+       console.log(filteredPosts);
+       this.setState({
+         postList: filteredPosts,
+       })
+     })
+     .catch(err => console.log(err))
 
 
-  }
+   }
 
-  render(){
+
+ getAllComments() {
+     console.log('getting the comments....');
+     fetch('/api/comments',{
+       headers: {
+        "Content-Type": "application/json"
+       },
+       credentials: 'include',
+     })
+     .then(res => res.json())
+     .then(comments => {
+       console.log('GOT the comments....');
+       console.log(comments);
+       // console.log(this.setState)
+       this.setState({
+         commentList: comments,
+       })
+     })
+   }
+
+
+
+ handleCommentClick(event){
+     event.preventDefault();
+     const{message} = this.state
+
+     console.log("in blog.js handleCommentClick");
+
+     fetch('/api/comments',{
+       method: "POST",
+       body: JSON.stringify({
+         message,
+       }),
+       headers: {
+         "Content-Type":"application/json"
+       },
+       credentials: 'include',
+     })
+     .then((response) => {
+       if(response.status >= 400) {
+         console.log('ERROR NOT POSTED');
+         return;
+       }
+
+       console.log('making next fetch')
+       this.getAllComments();
+       return response.json();
+     })
+     .then(body => {
+       console.log('the body: ')
+       console.log(body);
+     })
+     .catch(err => console.log(err))
+
+
+   }
+
+   render(){
 
     return (
-      <div>
-        <meta charSet="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css" />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-        {/* Navbar */}
-        <div className="w3-top">
-          <div className="w3-bar w3-theme-d2 w3-left-align w3-large">
-            <a href="/" className="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i className="fa fa-home w3-margin-right" />Just Desserts</a>
-            <a href="#" className="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i className="fa fa-globe" /></a>
-            <div className="w3-dropdown-hover w3-hide-small">
-              <button className="w3-button w3-padding-large" title="Notifications"><i className="fa fa-bell" /></button>
-              <div className="w3-dropdown-content w3-card-4 w3-bar-block" style={{width: 300}}>
 
-              </div>
-            </div>
+      
+      <div className="back">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossOrigin="anonymous" />
+
+  {/*-NAVBAR !*/}
+  <nav className="navbar navbar-light navbar-fixed-top" style={{backgroundColor: '#6F42C1'}}>  
+    <div className="container-fluid">
+      <div className="navbar-header">
+        <a className="navbar-brand" href="/">
+          <img src="/images/blog/dot.png" width={30} height={30} className="d-inline-block align-top" alt />
+        </a>
+      </div>
+      <ul className="nav navbar-nav">
+        <li className="active"><a href="/Profile">Profile</a></li>
+        <li className="active"><a href="/Blog">Blog</a></li>
+      </ul>
+      <form className="navbar-form navbar-left">
+        <div className="input-group">
+          <input type="text" className="form-control" placeholder="Search" name="search" onChange={(e) => this.handleSearchChange(e.target.value)}/>
+          <div className="input-group-btn">
+            <button className="btn btn-default" type="submit" onClick={(e)=> this.handleSearchClick(e)}>
+              <i className="glyphicon glyphicon-search " />
+            </button>
+             <SearchList posts={this.state.searchList}/>
           </div>
         </div>
-        {/* Page Container */}
-        <div className="w3-container w3-content" style={{maxWidth: 1400, marginTop: 80}}>
-          {/* The Grid */}
-          <div className="w3-row">
-            {/* Left Column */}
-            <div className="w3-col m3">
-              {/* Profile */}
-              <div className="w3-card w3-round w3-white">
-                <div className="w3-container">
-                  <h4 className="w3-center">My Profile</h4>
-                  <p className="w3-center"><img src="" className="w3-circle" style={{height:106, width:106}} alt="Avatar"/></p>
-                  <hr />
-                </div>
-              </div>
-              <br />
-              {/* Accordion */}
-              <div className="w3-card w3-round">
-                <div className="w3-white">
-                  <button className="w3-button w3-block w3-theme-l1 w3-left-align"><a href="./Profile"><i className="fa fa-users fa-fw w3-margin-right" /> My Profile </a></button>
-                  <div id="Demo3" className="w3-hide w3-container">
-                    <div className="w3-row-padding">
-                      <br />
-                      <div className="w3-half">
-                        <img src="" style={{width: '100%'}} className="w3-margin-bottom" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <br />
+      </form>
+    </div>
+  </nav>
+  <div className="container-fluid">
+
+    {/*-LEFT SIDE CONTENT */}
+    <div className="form-row">
+      <div className="f">
+        <div className="sidebar">
+          <h1> JustDesserts</h1>
+          <h2>Blog</h2>
+        </div> 
+      </div>
+    </div>
+   <br/>
+    {/*-POST BOX  !*/}
 
 
-              {/* End Left Column */}
-            </div>
-            {/* Middle Column */}
-            <div className="w3-col m7">
-              <div className="w3-row-padding">
-                    
-                    
-                <div>
-               
-               <form>
-                  <div className = "inputBox-search">
-                  <input type="text" name="tag" placeholder="Search" onChange={(e) => this.handleSearchChange(e.target.value)} />
-                  <input type="submit" className="w3-button w3-theme " name="" value="Search" onClick={(e)=> this.handleSearchClick(e)}/>
-                  <SearchList posts={this.state.searchList} />
-                </div>
-                <br/>
-              </form>
-             
-            </div>
-
-                
-
-                <div className="w3-col m12">
-                  <div className="w3-card w3-round w3-white">
-                    <div className="w3-container w3-padding">
-                      <div className = "Tags">
-                  {/*Post FieldName*/}
-                   <form onSubmit={this.handleClick}>
-                   <div className = "inputBox">
-                      <input type="text" name="title" placeholder="Title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
-                   </div>
-                    <br/>
-                   <div className = "inputBox">   
-                       <textarea type="text" name="description" placeholder="Description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
-                     </div>
-                     <br/>
-                   <div className = "inputBox">   
-                       <input type="text" name="zipcode" placeholder="Zipcode" maxLength="5" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
-                       <input type="text" name="tag" placeholder="Tag ex: vegan, non-dairy, gluten-free, sugar-free" maxLength="12" onChange={(e) => this.handleChange(e.target.value, 'tag')}/>
-
-
-                    </div>
-                 
-
-                        <input type="submit" className="w3-button w3-theme " name="" value="Post" onClick={(e)=> this.handleClick(e)}/>
-                        {/*<button type="button" className="w3-button w3-theme"><i className="fa fa-pencil" /> Post</button> */}
-                    </form>
-                   {/*End of Post FieldName*/}
-
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="posts-results"><br />
-                
-                <PostList posts={this.state.postList} />
-                <div className="w3-row-padding" style={{margin: '0 -26px'}}>
-                  <div className="w3-half">
-                 
-                    {/**<img src="" style={{width: '100%'}} alt="" className="w3-margin-bottom" />***/}
-                  </div>
-                  <div className="w3-half">
-                    {/**<<img src="" style={{width: '100%'}} alt="" className="w3-margin-bottom" />***/}
-                  </div>
-                </div>
-              </div>
-
-              {/* End Middle Column */}
-            </div>
-
-            {/* End Grid */}
-          </div>
+    <form className="form col-md-4 col-md-offset-4" onSubmit={this.handleClick}>
+      <div className="inputBox-search">
         
-
-
-          {/* End Page Container */}
+        <div className="form-row"> 
+          <div className="form-group">
+            <input type="text" name="title" className="form-control" placeholder="Title" onChange={(e) => this.handleChange(e.target.value, 'title')} />
+          </div>
+          <div className="form-group">
+            <textarea className="form-control" placeholder="Description" rows={5} id="Description" onChange={(e) => this.handleChange(e.target.value, 'description')}/>
+          </div>
+          <div className="form-row">  
+            <div className="form-group col-md-6">                                                                                                       
+              <input type="text" name="zipcode" maxLength={5} className="form-control" placeholder="Zipcode" onChange={(e) => this.handleChange(e.target.value, 'zipcode')}/>
+            </div>
+            <div className="form-group col-md-6">
+              <input type="text" name="tag" className="form-control" placeholder="Tag" onChange={(e) => this.handleChange(e.target.value,'tag')}/>
+            </div>
+          </div>
         </div>
+        <button onClick={(e)=> this.handleClick(e)}>Post</button>
+      </div>
+      </form>
+  </div>
+  {/*-POST SECTION !*/}
+  <div className="content">
+    <div className="form-row ">  
+      <div className="form-group">
+        {/*-PUT POSTS LIST OVER HERE !*/}
+         <PostList posts={this.state.postList} />
+         
 
       </div>
+    </div>
+  </div>
+</div>
+
       );
-    }
+      }
 
-  }
+   } 
 
 
 
-export default blog;
+ export default blog;

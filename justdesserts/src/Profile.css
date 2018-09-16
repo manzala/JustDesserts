@@ -1,0 +1,19 @@
+.middle{
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 2px solid #e8e1e1;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,.5);
+    background: rgba(232, 225, 225,.75);
+    margin-top: 80px;
+    margin-bottom: 30px;
+
+}
+
+.btn.btn-default {
+    background: #c2aee8;
+    color: white;
+}
