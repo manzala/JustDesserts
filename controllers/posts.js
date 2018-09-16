@@ -4,20 +4,7 @@ const models = require('../models');
 const router = express.Router();
 
 
-//this route is: '/api/posts/'
-router.get('/profile', (req, res) => {
-	models.Post.findAll({
-		where: {
-			userId: req.user.id,
-		},
-		include: [{
-			model: models.User
-		}],
-		 order:[[ 'createdAt', 'DESC']],
-	}).then((allPosts) => {
-		res.json(allPosts);
-	});
-});
+
 router.post('/profile', (req, res) => {
 	// this is for creating general posts
 	// models.Post.create({
