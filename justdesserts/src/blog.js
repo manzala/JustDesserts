@@ -12,10 +12,12 @@
        title: '',
        zipcode:'',
        tag:'',
+       message:'',
        description:'',
        postList: [],
        searchList: [],
        isFound:false,
+       commentList: [],
 
      };
 
@@ -24,6 +26,8 @@
      this.getAllPosts = this.getAllPosts.bind(this);
      this.handleSearchClick = this.handleSearchClick.bind(this);
      this.handleSearchChange = this.handleSearchChange.bind(this);
+     this.handleCommentClick = this.handleCommentClick.bind(this);
+     this.getAllComments = this.getAllComments.bind(this);
    }
 
    componentDidMount() {
@@ -131,6 +135,63 @@
 
    }
 
+
+ getAllComments() {
+     console.log('getting the comments....');
+     fetch('/api/comments',{
+       headers: {
+        "Content-Type": "application/json"
+       },
+       credentials: 'include',
+     })
+     .then(res => res.json())
+     .then(comments => {
+       console.log('GOT the comments....');
+       console.log(comments);
+       // console.log(this.setState)
+       this.setState({
+         commentList: comments,
+       })
+     })
+   }
+
+
+
+ handleCommentClick(event){
+     event.preventDefault();
+     const{message} = this.state
+
+     console.log("in blog.js handleCommentClick");
+
+     fetch('/api/comments',{
+       method: "POST",
+       body: JSON.stringify({
+         message,
+       }),
+       headers: {
+         "Content-Type":"application/json"
+       },
+       credentials: 'include',
+     })
+     .then((response) => {
+       if(response.status >= 400) {
+         console.log('ERROR NOT POSTED');
+         return;
+       }
+
+       console.log('making next fetch')
+       this.getAllComments();
+       return response.json();
+     })
+     .then(body => {
+       console.log('the body: ')
+       console.log(body);
+     })
+     .catch(err => console.log(err))
+
+
+   }
+
    render(){
 
     return (
@@ -210,6 +271,7 @@
       <div className="form-group">
         {/*-PUT POSTS LIST OVER HERE !*/}
          <PostList posts={this.state.postList} />
+         
 
       </div>
     </div>

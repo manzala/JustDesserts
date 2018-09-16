@@ -13,12 +13,20 @@ const Post = (props) => {
       <p>Zip: {props.data.zip}</p>
       <p>Tag: {props.data.tag}</p>
       <button type="button"> Like</button>
-      <button type="button">Comment</button>
+         
+             <form className="comments" onSubmit={this.handleCommentClick}>
+            
+      <button type="button" onChange={(e) => this.handleChange(e.target.value, 'message')}>Comment</button>
+      </form>
       </div>
       </div>
     </div>
   );
 }
+
+
+
+
 
 
 const PostList = (props) => {
